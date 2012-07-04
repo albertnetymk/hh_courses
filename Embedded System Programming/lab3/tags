@@ -1,0 +1,232 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+ABORT	include/TinyTimber.h	123;"	d
+AFTER	include/TinyTimber.h	63;"	d
+ASYNC	include/TinyTimber.h	76;"	d
+AWK	Makefile	/^AWK=awk$/;"	m
+BASELINE	include/TinyTimber.h	96;"	d
+BEFORE	include/TinyTimber.h	70;"	d
+Blinker	include/blinker.h	/^} Blinker;$/;"	t	typeref:struct:__anon4
+Button	include/button.h	/^} Button;$/;"	t	typeref:struct:__anon3
+CAT	Makefile	/^CAT=cat$/;"	m
+CC	Makefile	/^CC=avr-gcc$/;"	m
+COMPILEOPTION	Makefile	/^COMPILEOPTION=-mmcu=$(MCU) $(CPPFLAGS) -std=c99 -Os$/;"	m
+CONFJOY	include/button.h	13;"	d
+CONFLCD	src/TinyTimber.c	22;"	d	file:
+CONFLCD	src/testLab3.c	24;"	d	file:
+CONFPIEZO	include/piezo.h	10;"	d
+DENDIR	Makefile	/^DENDIR = $(OUTPUTDIR)\/dep$/;"	m
+DISABLE	src/TinyTimber.c	19;"	d	file:
+DISABLE	src/TinyTimber.c	60;"	d	file:
+DRCLR	src/lcd.c	/^static void DRCLR(int pos)$/;"	f	file:
+ENABLE	src/TinyTimber.c	20;"	d	file:
+ENABLE	src/TinyTimber.c	61;"	d	file:
+HIGH16	src/TinyTimber.c	45;"	d	file:
+HIGH16	src/TinyTimber.c	82;"	d	file:
+IDIR	Makefile	/^IDIR=\/usr\/lib\/avr\/include$/;"	m
+INF	src/TinyTimber.c	48;"	d	file:
+INF	src/TinyTimber.c	85;"	d	file:
+INIT	src/TinyTimber.c	23;"	d	file:
+INIT	src/TinyTimber.c	63;"	d	file:
+INLINE_1	include/TinyTimber.h	131;"	d
+INLINE_2	include/TinyTimber.h	130;"	d
+INLINE_3	include/TinyTimber.h	129;"	d
+INTERRUPT	include/TinyTimber.h	92;"	d
+Is	src/testLab3.c	/^} Is;$/;"	t	typeref:struct:__anon1	file:
+LCD	include/lcd.h	/^} LCD;$/;"	t	typeref:struct:__anon6
+LIBDIR	Makefile	/^LIBDIR=\/usr\/lib\/avr\/lib$/;"	m
+LINKOPTION	Makefile	/^LINKOPTION=-mmcu=$(MCU) -Os$/;"	m
+LOW16	src/TinyTimber.c	46;"	d	file:
+LOW16	src/TinyTimber.c	83;"	d	file:
+MAKEFILE	Makefile	/^MAKEFILE = \/home\/albertnet\/workspace\/c\/Makefile$/;"	m
+MAX	src/TinyTimber.c	47;"	d	file:
+MAX	src/TinyTimber.c	84;"	d	file:
+MCU	Makefile	/^MCU = atmega169$/;"	m
+MSEC	include/TinyTimber.h	102;"	d
+MSEC	include/TinyTimber.h	115;"	d
+Melody	include/melody.h	/^} Melody;$/;"	t	typeref:struct:__anon5
+Method	include/TinyTimber.h	/^typedef int (*Method)(Object*, int);$/;"	t
+Msg	include/TinyTimber.h	/^typedef struct msg_block *Msg;$/;"	t	typeref:struct:msg_block
+NMSGS	src/TinyTimber.c	15;"	d	file:
+NMSGS	src/TinyTimber.c	56;"	d	file:
+NOTHING	include/TinyTimber.h	32;"	d
+NTHREADS	src/TinyTimber.c	16;"	d	file:
+NTHREADS	src/TinyTimber.c	57;"	d	file:
+NULL	src/TinyTimber.c	89;"	d	file:
+NullMsg	include/TinyTimber.h	29;"	d
+OBJCOPY	Makefile	/^OBJCOPY=avr-objcopy$/;"	m
+OBJECTS	Makefile	/^OBJECTS = $(addprefix $(OUTPUTDIR)\/,$(subst .c,.o,$(SOURCES)))$/;"	m
+OUTPUTDIR	Makefile	/^OUTPUTDIR=obj$/;"	m
+Object	include/TinyTimber.h	/^} Object;$/;"	t	typeref:struct:__anon7
+PANIC	src/TinyTimber.c	27;"	d	file:
+PANIC	src/TinyTimber.c	65;"	d	file:
+Piezo	include/piezo.h	/^} Piezo;$/;"	t	typeref:struct:__anon8
+PrimeCalculator	include/primes.h	/^} PrimeCalculator;$/;"	t	typeref:struct:__anon9
+RESOLUTION	include/TinyTimber.h	108;"	d
+SEC	include/TinyTimber.h	105;"	d
+SEC	include/TinyTimber.h	118;"	d
+SETPC	src/TinyTimber.c	32;"	d	file:
+SETPC	src/TinyTimber.c	69;"	d	file:
+SETSTACK	src/TinyTimber.c	30;"	d	file:
+SETSTACK	src/TinyTimber.c	67;"	d	file:
+SLEEP	src/TinyTimber.c	21;"	d	file:
+SLEEP	src/TinyTimber.c	62;"	d	file:
+SORT	Makefile	/^SORT=sort$/;"	m
+SOURCES	Makefile	/^SOURCES = $(notdir $(wildcard $(SRCDIR)\/*))$/;"	m
+SRCDIR	Makefile	/^SRCDIR=src$/;"	m
+SS	src/melody.c	15;"	d	file:
+STACKSIZE	src/TinyTimber.c	14;"	d	file:
+STACKSIZE	src/TinyTimber.c	55;"	d	file:
+STARTUP	include/TinyTimber.h	88;"	d
+STATUS	src/TinyTimber.c	18;"	d	file:
+STATUS	src/TinyTimber.c	59;"	d	file:
+SYNC	include/TinyTimber.h	84;"	d
+Sound	include/sound.h	/^} Sound;$/;"	t	typeref:struct:__anon2
+TARGET	Makefile	/^TARGET = target$/;"	m
+TCMP_INTERRUPT	src/TinyTimber.c	34;"	d	file:
+TCMP_INTERRUPT	src/TinyTimber.c	71;"	d	file:
+TDELTA	src/TinyTimber.c	44;"	d	file:
+TDELTA	src/TinyTimber.c	81;"	d	file:
+TIMERGET	src/TinyTimber.c	36;"	d	file:
+TIMERGET	src/TinyTimber.c	73;"	d	file:
+TIMERSET	src/TinyTimber.c	38;"	d	file:
+TIMERSET	src/TinyTimber.c	75;"	d	file:
+TOVFL_INTERRUPT	src/TinyTimber.c	35;"	d	file:
+TOVFL_INTERRUPT	src/TinyTimber.c	72;"	d	file:
+Thread	src/TinyTimber.c	/^typedef struct thread_block *Thread;$/;"	t	typeref:struct:thread_block	file:
+Time	include/TinyTimber.h	/^typedef signed long Time;$/;"	t
+USEC	include/TinyTimber.h	112;"	d
+WITHIN	include/TinyTimber.h	56;"	d
+_TINYTIMBER_	include/TinyTimber.h	8;"	d
+_blinker_h	include/blinker.h	5;"	d
+_button_h	include/button.h	5;"	d
+_lcd_h	include/lcd.h	2;"	d
+_melody_h	include/melody.h	2;"	d
+_piezo_h	include/piezo.h	4;"	d
+_primes_h	include/primes.h	5;"	d
+_sound_h	include/sound.h	2;"	d
+a	src/melody.c	3;"	d	file:
+abort_msg	src/TinyTimber.c	/^INLINE_1 void abort_msg(Msg m)$/;"	f
+activeStack	src/TinyTimber.c	/^Thread activeStack = &thread0;$/;"	v
+arg	src/TinyTimber.c	/^	int arg;             \/\/ argument to the above$/;"	m	struct:msg_block	file:
+async	src/TinyTimber.c	/^INLINE_3 Msg async(Time bl, Time dl, Object *to, Method meth, int arg)$/;"	f
+b	src/melody.c	4;"	d	file:
+baseline	src/TinyTimber.c	/^	Time baseline;       \/\/ event time reference point$/;"	m	struct:msg_block	file:
+blink	src/blinker.c	/^static void blink(Blinker *self, int flag)$/;"	f	file:
+blink_flag	src/lcd.c	/^static int blink_flag = 0;$/;"	v	file:
+button	src/button.c	/^void button(Button *self, int nothing)$/;"	f
+c	src/melody.c	5;"	d	file:
+calculator	src/testLab3.c	/^PrimeCalculator calculator = initPrimeCalculator(&lcd);$/;"	v
+context	src/TinyTimber.c	/^	jmp_buf context;     \/\/ machine state$/;"	m	struct:thread_block	file:
+current	src/TinyTimber.c	/^Thread current = &thread0;$/;"	v
+current_baseline	src/TinyTimber.c	/^INLINE_1 Time current_baseline()$/;"	f
+d	src/melody.c	6;"	d	file:
+deadline	src/TinyTimber.c	/^	Time deadline;       \/\/ absolute deadline (=priority)$/;"	m	struct:msg_block	file:
+dequeue	src/TinyTimber.c	/^INLINE_2 Msg dequeue(Msg *queue)$/;"	f
+dispatch	src/TinyTimber.c	/^INLINE_2 void dispatch(Thread next)$/;"	f
+duration	src/melody.c	/^static int duration[50] = {x, x, x, x, x, y, z, x, x, x, $/;"	v	file:
+e	src/melody.c	7;"	d	file:
+enqueueByBaseline	src/TinyTimber.c	/^INLINE_2 void enqueueByBaseline(Msg p, Msg *queue)$/;"	f
+enqueueByDeadline	src/TinyTimber.c	/^INLINE_2 void enqueueByDeadline(Msg p, Msg *queue)$/;"	f
+f	include/sound.h	/^	int f;$/;"	m	struct:__anon2
+f	src/melody.c	8;"	d	file:
+freq	src/melody.c	/^static int freq[50] = {e, e, e, e, e, e, e, f, f, f,$/;"	v	file:
+g	src/melody.c	9;"	d	file:
+h	src/melody.c	10;"	d	file:
+idle	src/TinyTimber.c	/^INLINE_2 void idle(void)$/;"	f
+initBlinker	include/blinker.h	14;"	d
+initButton	include/button.h	12;"	d
+initIs	src/testLab3.c	23;"	d	file:
+initLCD	include/lcd.h	9;"	d
+initMelody	include/melody.h	12;"	d
+initObject	include/TinyTimber.h	39;"	d
+initPiezo	include/piezo.h	9;"	d
+initPrimeCalculator	include/primes.h	11;"	d
+initSound	include/sound.h	14;"	d
+initialize	src/TinyTimber.c	/^void initialize(void)$/;"	f
+insert	src/TinyTimber.c	/^INLINE_2 void insert(Msg m, Msg *queue)$/;"	f
+irqstatus	src/TinyTimber.c	/^char irqstatus = 0;$/;"	v
+is_prime	src/primes.c	/^static int is_prime(unsigned int number)$/;"	f	file:
+lcd	include/blinker.h	/^	LCD *lcd;$/;"	m	struct:__anon4
+lcd	include/button.h	/^	LCD *lcd;$/;"	m	struct:__anon3
+lcd	include/primes.h	/^	LCD *lcd;$/;"	m	struct:__anon9
+lcd	src/testLab3.c	/^LCD lcd = initLCD();$/;"	v
+mark	src/TinyTimber.c	/^INLINE_1 void mark(void)$/;"	f
+melody	src/testLab3.c	/^Melody melody = initMelody(&sound); $/;"	v
+messages	src/TinyTimber.c	/^struct msg_block messages[NMSGS];$/;"	v	typeref:struct:msg_block
+method	src/TinyTimber.c	/^	Method method;       \/\/ code to run$/;"	m	struct:msg_block	file:
+msg	src/TinyTimber.c	/^	Msg msg;             \/\/ message under execution$/;"	m	struct:thread_block	file:
+msgPool	src/TinyTimber.c	/^Msg msgPool = messages;$/;"	v
+msgQ	src/TinyTimber.c	/^Msg msgQ = NULL;$/;"	v
+msg_block	src/TinyTimber.c	/^struct msg_block {$/;"	s	file:
+next	src/TinyTimber.c	/^	Msg next;            \/\/ for use in linked lists$/;"	m	struct:msg_block	file:
+next	src/TinyTimber.c	/^	Thread next;         \/\/ for use in linked lists$/;"	m	struct:thread_block	file:
+num	src/lcd.c	/^int num[10][4] = { { 0x1, 0x5, 0x5, 0x1 },$/;"	v
+overflows	src/TinyTimber.c	/^int overflows = 0;$/;"	v
+ownedBy	include/TinyTimber.h	/^    struct thread_block *ownedBy, *wantedBy;$/;"	m	struct:__anon7	typeref:struct:__anon7::thread_block
+p	include/sound.h	/^	Piezo *p;$/;"	m	struct:__anon2
+period	include/blinker.h	/^	int period;$/;"	m	struct:__anon4
+piezo	src/testLab3.c	/^Piezo piezo = initPiezo();$/;"	v
+play	src/sound.c	/^void play(Sound *self, int freq) $/;"	f
+playDianaHacked	src/melody.c	/^void playDianaHacked(Melody *self, int index)$/;"	f
+playDianaHackedRecursion	src/melody.c	/^static void playDianaHackedRecursion(Melody *self, int index)$/;"	f	file:
+playDianaNonStop	src/melody.c	/^void playDianaNonStop(Melody *self, int index)$/;"	f
+playDianaNonStopRecursion	src/melody.c	/^static void playDianaNonStopRecursion(Melody *self, int index)$/;"	f	file:
+playDianaRecommended	src/melody.c	/^void playDianaRecommended(Melody *self, int index)$/;"	f
+playDianaRecommendedRecursion	src/melody.c	/^static void playDianaRecommendedRecursion(Melody *self, int index)$/;"	f	file:
+playHacked	src/sound.c	/^void playHacked(Sound *self, int state)$/;"	f
+playRecursion	src/sound.c	/^void playRecursion(Sound *self, int state)$/;"	f
+pop	src/TinyTimber.c	/^INLINE_2 Thread pop(Thread *stack)$/;"	f
+primes	src/primes.c	/^int primes(PrimeCalculator *self, unsigned int x)$/;"	f
+push	src/TinyTimber.c	/^INLINE_2 void push(Thread t, Thread *stack)$/;"	f
+remove	src/TinyTimber.c	/^INLINE_2 int remove(Msg m, Msg *queue)$/;"	f
+run	src/TinyTimber.c	/^void run(void)$/;"	f
+s	include/melody.h	/^	Sound *s;$/;"	m	struct:__anon5
+schedule	src/TinyTimber.c	/^INLINE_2 void schedule()$/;"	f
+segment	include/blinker.h	/^	int segment;$/;"	m	struct:__anon4
+segmentOff	src/lcd.c	/^int segmentOff(LCD *self, int segment)$/;"	f
+segmentOn	src/lcd.c	/^int segmentOn(LCD *self, int segment)$/;"	f
+setFrequency	src/sound.c	/^void setFrequency(Sound *self, int freq)$/;"	f
+setPeriod	src/blinker.c	/^int setPeriod(Blinker *self, int period)$/;"	f
+setStatus	src/sound.c	/^void setStatus(Sound *self, int status)$/;"	f
+showAll	src/testLab3.c	/^int showAll(Is *self, int nothing){$/;"	f
+sound	src/testLab3.c	/^Sound sound = initSound(&piezo, 100);$/;"	v
+stack	src/TinyTimber.c	/^	unsigned char stack[STACKSIZE];$/;"	m	struct:stack	file:
+stack	src/TinyTimber.c	/^struct stack {$/;"	s	file:
+stacks	src/TinyTimber.c	/^struct stack stacks[NTHREADS];$/;"	v	typeref:struct:stack
+startBlinking	src/blinker.c	/^int startBlinking(Blinker *self, int nothing)$/;"	f
+status	include/sound.h	/^	int status;$/;"	m	struct:__anon2
+stopBlinking	src/blinker.c	/^int stopBlinking(Blinker *self, int nothing)$/;"	f
+super	include/blinker.h	/^	Object super;$/;"	m	struct:__anon4
+super	include/button.h	/^	Object super;$/;"	m	struct:__anon3
+super	include/lcd.h	/^	Object super;$/;"	m	struct:__anon6
+super	include/melody.h	/^	Object super;$/;"	m	struct:__anon5
+super	include/piezo.h	/^	Object super;$/;"	m	struct:__anon8
+super	include/primes.h	/^	Object super;$/;"	m	struct:__anon9
+super	include/sound.h	/^	Object super;$/;"	m	struct:__anon2
+super	src/testLab3.c	/^  Object super;$/;"	m	struct:__anon1	file:
+sync	src/TinyTimber.c	/^INLINE_3 int sync(Object *to, Method meth, int arg)$/;"	f
+t	src/melody.c	16;"	d	file:
+testPiezo	src/piezo.c	/^void testPiezo(Piezo *self, int flag)$/;"	f
+thread0	src/TinyTimber.c	/^struct thread_block thread0;$/;"	v	typeref:struct:thread_block
+threadPool	src/TinyTimber.c	/^Thread threadPool = threads;$/;"	v
+thread_block	src/TinyTimber.c	/^struct thread_block {$/;"	s	file:
+threads	src/TinyTimber.c	/^struct thread_block threads[NTHREADS];$/;"	v	typeref:struct:thread_block
+timerQ	src/TinyTimber.c	/^Msg timerQ = NULL;$/;"	v
+timestamp	src/TinyTimber.c	/^Time timestamp = 0;$/;"	v
+to	src/TinyTimber.c	/^	Object *to;          \/\/ receiving object$/;"	m	struct:msg_block	file:
+turnOff	src/piezo.c	/^void turnOff(Piezo *self, int nothing)$/;"	f
+turnOn	src/piezo.c	/^void turnOn(Piezo *self, int nothing)$/;"	f
+waitsFor	src/TinyTimber.c	/^	Object *waitsFor;    \/\/ deadlock detection link$/;"	m	struct:thread_block	file:
+wantedBy	include/TinyTimber.h	/^    struct thread_block *ownedBy, *wantedBy;$/;"	m	struct:__anon7	typeref:struct:__anon7::
+writeChar	src/lcd.c	/^void writeChar(char ch, int pos)$/;"	f
+writeDigit	src/lcd.c	/^int writeDigit(LCD *self, int digitPos)$/;"	f
+writeInt	src/lcd.c	/^int writeInt(LCD *self, unsigned int val)$/;"	f
+writeLong	src/lcd.c	/^void writeLong(long x)$/;"	f
+x	src/melody.c	12;"	d	file:
+y	src/melody.c	13;"	d	file:
+z	src/melody.c	14;"	d	file:

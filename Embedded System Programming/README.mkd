@@ -1,0 +1,1 @@
+This is the code for Embedded System Programming course of HH in 2011 autumn. All three labs(projects) share the same Makefile.
