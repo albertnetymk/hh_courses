@@ -1,0 +1,11 @@
+clear
+x=linspace(-3,3,100);
+y=linspace(-3,3,100);
+[X,Y]=meshgrid(x,y);
+Z=cos(X)+Y.*exp(-X.^2-Y.^2);
+figure(1)
+clf
+surf(X,Y,Z)
+figure(2)
+clf
+contour(Z)
