@@ -1,0 +1,4 @@
+This project covers all the labs and the projects from HH in March, 2011. All the Java project share the same build script somehow, but the running
+target is different from each other, so you need to figure it out how to run it.
+
+Go to root directory for each project, and run ../make.sh \<target\>.
