@@ -1,0 +1,48 @@
+%class Calculator
+%interface	Tokens
+%next nextToken()
+%get lexer.token
+%semantic int: lexer.token
+
+%token 'a' 'b'
+
+%type <int> aexp
+
+%%
+p	:  aexp 	{System.out.println(countA);}
+	;
+aexp	: 'a' aexp 'b'	 {countA++;countB++;}
+	| 'a' 'b'	 {countA++;countB++;}
+	;
+
+%%
+
+private int nextToken(){
+	try{
+		return lexer.yylex();
+	}catch (java.io.IOException e){
+		System.out.println("from lexer");
+		e.printStackTrace();
+	}
+	return 0;
+}
+
+private void yyerror(String msg){
+	System.out.println("My Error: "+msg);
+	System.exit(1);
+}
+
+private Scanner lexer;
+private int countA, countB;
+Calculator(Scanner s){lexer=s;countA=0;countB=0;}
+
+public static void main(String[] args){
+	try{
+		Scanner scanner=new Scanner(new java.io.FileReader(args[0]));
+		scanner.yylex();
+		Calculator cal=new Calculator(scanner);
+		cal.parse();
+	}catch(Exception e){
+		System.out.println(e.getMessage());
+	}
+}

@@ -1,0 +1,51 @@
+%class     BracketsEvaluator
+%interface BracketsTokens
+%next      nextToken()
+%get       lexer.token
+%semantic  int: lexer.val
+
+%token PARENTHESIS
+%type <Integer> brackets
+ 
+%%
+bracketsList		: bracketsList brackets
+			| brackets
+			;
+brackets		: '(' brackets ')'
+			| '[' brackets ']'
+			| '{' brackets '}'
+			| '(' ')'
+			| '[' ']'
+			| '{' '}'
+     			;
+
+%%
+
+/*
+   implementation of nextToken() using lexer.yylex() that throws an exception.
+*/
+private int nextToken(){
+   try{
+    return lexer.yylex();
+   }catch(java.io.IOException e){System.out.println("from lexer");e.printStackTrace();}
+   return 0;
+}
+
+	
+
+private void yyerror(String msg){
+  System.out.println("ERROR: " + msg);
+  System.exit(1);
+} 
+
+private BracketsScanner lexer;
+BracketsEvaluator(BracketsScanner s){lexer = s;}
+
+public static void main(String[] cmdLn){
+       try{
+	  BracketsScanner scanner = new BracketsScanner(new java.io.FileReader(cmdLn[0]));
+	  scanner.yylex();
+          BracketsEvaluator eval = new BracketsEvaluator(scanner);
+          eval.parse();
+       }catch(Exception e){System.out.println(e.getMessage());}
+}

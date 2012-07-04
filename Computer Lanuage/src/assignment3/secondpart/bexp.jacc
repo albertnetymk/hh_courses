@@ -1,0 +1,63 @@
+%{
+	import syntaxtree.*;
+%}
+%class     BexpParser
+%interface BooleanTokens
+%next      nextToken()
+%get       scanner.token
+%semantic  Object: scanner.semanticValue
+
+%token <Boolean> TRUE FALSE 
+%token <String>  ID
+%token '-' '&' '|'
+%token '(' ')' 
+
+%left '|'
+%left '&'
+%left '-'
+
+%type <Exp> bexp
+ 
+%%
+p : bexp	{System.out.println($1);}
+  ;
+
+bexp : bexp '|' bexp {$$=new Or($1,$3);}
+     | bexp '&' bexp {$$=new And($1,$3);}
+     | '-' bexp      {$$=new Not($2);}
+     | TRUE          {$$=new BooleanLiteral($1);} 
+     | FALSE         {$$=new BooleanLiteral($1);}
+     | ID            {$$=new Id($1);}
+     | '(' bexp ')'  {$$=$2;}
+     ;
+
+%%
+
+/*
+   implementation of nextToken()
+   using scanner.yylex() that throws an exception.
+*/
+private int nextToken(){
+   try{
+    return scanner.yylex();
+   }catch(java.io.IOException e){System.out.println("from scanner");e.printStackTrace();}
+   return 0;
+}
+
+
+private void yyerror(String msg){
+  System.out.println("at line: " + (scanner.line()+1) + " with: ** " + scanner.yytext() + " **");
+  System.exit(1);
+} 
+
+private Scanner scanner;
+BexpParser(Scanner s){scanner = s;}
+
+public static void main(String[] cmdLn){
+       try{
+	  Scanner scanner = new Scanner(new java.io.FileReader(cmdLn[0]));
+	  scanner.yylex();
+          BexpParser eval = new BexpParser(scanner);
+          eval.parse();
+       }catch(Exception e){System.out.println(e.getMessage());}
+}

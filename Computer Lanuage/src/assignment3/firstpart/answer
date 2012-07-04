@@ -1,0 +1,6 @@
+1a	 jacc match the longest expression, so the shift action is used.
+
+2a	 it says there is one warning, 1 shift/reduce, 0 reduce/reduce
+
+2b	 it rejects the sentence. 
+	 varDec and stm are contradict each other. jacc doesn't know which one it should use, when an "ID" is encountered. For the first two tries, jacc uses varDec, and it is accidentally right. Unfortunately, on its third shot, it picks the wrong production.

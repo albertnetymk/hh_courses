@@ -1,0 +1,121 @@
+%class MiniJavaParser
+%interface JavaTokens
+%next 	nextToken()
+%get	lexer.token
+%semantic Object: lexer.val
+
+/*%token	ABSTRACT BREAK EXTENDS IMPLEMENTS IF ELSE WHILE SWITCH CASE DEFAULT 
+%token	<String> BINARYOPERATOR
+%token	<String> VISIBILITY
+*/
+%token	class public static void main String int boolean if while System.out.println length true false this else new return
+%token	';' ',' ',' '!'
+%token	'(' ')' '{' '}' '[' ']'
+%token	'+' '-' '*' '/' '&&'
+
+%token	<String> IDENTIFIER
+%token	<Integer> INTEGER
+
+%%
+
+Goal 			: 	MainClass  ClassDeclarations 
+			;
+ClassDeclarations	:	ClassDeclarations ClassDeclaration
+			|	ClassDeclaration
+			;
+MainClass 		: 	class IDENTIFIER '{' public static void main '(' String '[' ']' IDENTIFIER ')' '{' Statements '}' 
+			;
+ClassDeclaration 	: 	class IDENTIFIER  extends IDENTIFIER  '{' VarDeclarations MethodDeclarations '}'
+			|	class IDENTIFIER  '{' VarDeclarations  MethodDeclarations  '}'
+			;
+VarDeclarations		:	VarDeclarations VarDeclaration
+			|	VarDeclaration
+			;
+
+VarDeclaration 		: 	Type IDENTIFIER ';'
+			;
+MethodDeclarations	:	MethodDeclarations MethodDeclaration
+			|	MethodDeclaration
+			;
+MethodDeclaration 	: 	public Type IDENTIFIER '('  TypeIdentifierPairs  ')' '{'  VarDeclarations   Statements  return Expression ';' '}'
+			|	public Type IDENTIFIER '('  ')' '{' VarDeclarations  Statements return Expression ';' '}'
+			;
+
+TypeIdentifierPairs	:	TypeIdentifierPairs ',' TypeIdentifier
+			|	TypeIdentifier
+			;
+TypeIdentifier		:	Type IDENTIFIER
+			;
+
+Type 	: 	int '[' ']'
+	| 	boolean
+	| 	int
+	| 	IDENTIFIER
+	;
+
+Statements	:	Statements Statement
+		|	Statement
+		;
+Statement	: 	if '(' Expression ')' Statements else Statements
+		| 	while '(' Expression ')' Statements
+		| 	System.out.println '(' Expression ')' ';'
+		| 	IDENTIFIER = Expression ';'
+		| 	IDENTIFIER '[' Expression ']' = Expression ';'
+		;
+
+ExpressionPairs	:	ExpressionPairs ',' Expression
+		|	Expression
+		;
+Expression 	: 	Expression '(' '&&' ')' Expression
+		|	Expression '('  '<' ')' Expression
+		|	Expression '('  '+' ')' Expression
+		|	Expression '(' '-'  ')' Expression
+		|	Expression '(' '*'  ')' Expression
+		| 	Expression '[' Expression ']'
+		| 	Expression '.' length
+		| 	Expression '.' IDENTIFIER '('  ExpressionPairs  ')'
+		|	Expression '.' IDENTIFIER '(' ')'
+		| 	INTEGER
+		| 	true
+		| 	false
+		| 	IDENTIFIER
+		| 	this
+		| 	new int '[' Expression ']'
+		| 	new IDENTIFIER '(' ')'
+		| 	'!' Expression
+		| 	'(' Expression ')'
+		;
+IDENTIFIER 	: 	IDENTIFIER
+		;
+%%
+
+
+private int nextToken(){
+        try{
+                return lexer.yylex();
+        }catch (java.io.IOException e){
+                System.out.println(from lexer);
+                e.printStackTrace();
+        }
+        return 0;
+}
+
+private void yyerror(String msg){
+        System.out.println(My Error: +msg);
+        System.exit(1);
+}
+
+private Scanner lexer;
+Calculator(Scanner s){lexer=s;}
+
+public static void main(String[] args){
+        try{
+                Scanner scanner=new Scanner(new java.io.FileReader(args[0]));
+                scanner.yylex();
+                Calculator cal=new Calculator(scanner);
+                cal.parse();
+        }catch(Exception e){
+                System.out.println(e.getMessage());
+        }
+}
+

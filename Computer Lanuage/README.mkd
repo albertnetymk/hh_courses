@@ -1,0 +1,4 @@
+Started from January 2010. A lot of stuff is covered in here, such as compiler design, formal language, visitor pattern, etc. However, most of them
+are quite basic; this course didn't go into too many details, for that would take half a year or more.
+
+I am too lazy to clean this  project up. Maybe I will clean it in the future. The build.xml doesn't reflect this project much.

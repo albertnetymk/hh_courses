@@ -1,0 +1,17 @@
+%token TRUE FALSE 
+%token '-' '&' '|'
+%token '(' ')' 
+
+%left '|' '&'
+%nonassoc '-'
+%%
+bexp	: bexp '|' bexp
+	| bexp '&' bexp
+	| '-' bexp
+	| TRUE
+	| FALSE
+	| '(' bexp ')'
+	;
+%%
+
+

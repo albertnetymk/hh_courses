@@ -1,0 +1,16 @@
+%token IF THEN ELSE ASSIGN EXP
+
+%%
+
+goal 	: mstm
+	| ustm
+	;
+
+mstm 	: IF EXP THEN mstm ELSE mstm
+    	| ASSIGN
+    	; 
+
+ustm	: IF EXP THEN goal
+	| IF EXP THEN mstm ELSE ustm
+	;
+%%

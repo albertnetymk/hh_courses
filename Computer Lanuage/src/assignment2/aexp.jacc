@@ -1,0 +1,57 @@
+%class Calculator
+%interface IntegerTokens
+%next nextToken()
+%get lexer.token
+%semantic int: lexer.val
+
+%token <Integer> INTEGER
+%token '+' '-' '*' '/' ';'
+%token '(' ')'
+
+%left '+' '-'
+%left '*' '/'
+
+%type <Integer> aexp
+
+%%
+p	: p ';' aexp 	{System.out.println($3);}
+	| aexp		{System.out.println($1);}
+	;
+aexp	: aexp '+' aexp {$$=$1+$3;}
+	| aexp '-' aexp {$$=$1-$3;}
+	| aexp '*' aexp {$$=$1*$3;}
+	| aexp '/' aexp {$$=$1/$3;}
+	| '(' aexp ')' {$$=$2;}
+	| INTEGER {$$=$1;}
+	;
+
+%%
+
+private int nextToken(){
+	try{
+		return lexer.yylex();
+	}catch (java.io.IOException e){
+		System.out.println("from lexer");
+		e.printStackTrace();
+	}
+	return 0;
+}
+
+private void yyerror(String msg){
+	System.out.println("My Error: "+msg);
+	System.exit(1);
+}
+
+private Scanner lexer;
+Calculator(Scanner s){lexer=s;}
+
+public static void main(String[] args){
+	try{
+		Scanner scanner=new Scanner(new java.io.FileReader(args[0]));
+		scanner.yylex();
+		Calculator cal=new Calculator(scanner);
+		cal.parse();
+	}catch(Exception e){
+		System.out.println(e.getMessage());
+	}
+}

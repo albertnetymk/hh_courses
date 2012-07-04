@@ -1,0 +1,23 @@
+%token EXP '=' ID ';'
+
+%%
+
+goal : methodDec;
+
+methodDec : varDecs stms;
+
+varDecs : varDecs varDec
+        | 
+	;
+
+varDec : ID ID ';'
+       ;
+
+stms : stms stm
+     | 
+     ;
+
+stm : ID '=' EXP ';'
+    ;
+
+%%

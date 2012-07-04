@@ -1,0 +1,5 @@
+Accept method summarise the interface of abstract syntax class, so we don't need to care which particular Exp we are dealing with. 
+
+We leave it to the compiler to figure it out why class it really is, for Exp is an abstract class.
+
+If we choose to not use accept method, we will end up pre-knowing the subclass of Exp, before we visit the parse tree, which is not possible.

@@ -1,0 +1,10 @@
+In bexp.flex, the directive "%class Scanner" indicates the name of this class is Scanner.
+
+Evaluator.java is the parser program.
+
+There is also one interface called "BooleanTokens".
+
+Jacc generates one java class file and one java interface file.
+
+
+
