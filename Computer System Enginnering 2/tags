@@ -1,0 +1,155 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+CLIENT	handshakingRandom.c	/^int CLIENT[NUMBER];$/;"	v
+CONTEXT_SIZE	kernel.h	18;"	d
+CSR_BIT	kernel_hwdep.h	4;"	d
+Context	kernel.h	/^        uint    Context[CONTEXT_SIZE];$/;"	m	struct:__anon1
+DEADLINE	handshakingRandom.c	/^int DEADLINE[NUMBER];$/;"	v
+DEADLINE_REACHED	kernel.h	32;"	d
+DEADLINE_TEST_1	testMain.c	33;"	d	file:
+DEADLINE_TEST_2	testMain.c	34;"	d	file:
+DeadLine	kernel.h	/^        uint    DeadLine;$/;"	m	struct:__anon1
+FAIL	kernel.h	28;"	d
+FALSE	kernel.h	23;"	d
+INIT	kernel.h	26;"	d
+ISR_OFF	kernel_hwdep.h	5;"	d
+ISR_ON	kernel_hwdep.h	6;"	d
+KERNEL_H	kernel.h	6;"	d
+KERNEL_HWDEP_H	kernel_hwdep.h	2;"	d
+NOT_EMPTY	kernel.h	33;"	d
+NOWAIT1	testMain.c	30;"	d	file:
+NOWAIT2	testMain.c	31;"	d	file:
+NUMBER	handshakingRandom.c	15;"	d	file:
+OK	kernel.h	30;"	d
+PC	kernel.h	/^        void    (*PC)();$/;"	m	struct:__anon1
+RECEIVER	kernel.h	36;"	d
+RUNNING	kernel.h	25;"	d
+Running	api.c	/^TCB *Running;$/;"	v
+SENDER	kernel.h	35;"	d
+SP	kernel.h	/^        uint    *SP;$/;"	m	struct:__anon1
+SPSR	kernel.h	/^        uint    SPSR;$/;"	m	struct:__anon1
+STACK_SIZE	kernel.h	19;"	d
+SUCCESS	kernel.h	29;"	d
+StackSeg	kernel.h	/^        uint    StackSeg[STACK_SIZE];$/;"	m	struct:__anon1
+Status	kernel.h	/^        exception       Status;$/;"	m	struct:msgobj
+TASK_DEADLINE_1_DEADLINE	testMain.c	22;"	d	file:
+TASK_DEADLINE_2_DEADLINE	testMain.c	23;"	d	file:
+TASK_MAILBOX_DEADLINE	testMain.c	17;"	d	file:
+TASK_NO_WAIT_1_DEADLINE	testMain.c	20;"	d	file:
+TASK_NO_WAIT_2_DEADLINE	testMain.c	21;"	d	file:
+TASK_SERVER_DEADLINE	handshakingRandom.c	13;"	d	file:
+TASK_TERMINATE_DEADLINE	testMain.c	16;"	d	file:
+TASK_TICKS_MASTER_DEADLINE	testMain.c	24;"	d	file:
+TASK_TICKS_SLAVE_DEADLINE	testMain.c	25;"	d	file:
+TASK_WAIT_1_DEADLINE	testMain.c	18;"	d	file:
+TASK_WAIT_2_DEADLINE	testMain.c	19;"	d	file:
+TCB	kernel.h	/^} TCB;$/;"	t	typeref:struct:__anon1
+TICKS_TEST_1	testMain.c	36;"	d	file:
+TICKS_TEST_2	testMain.c	37;"	d	file:
+TRUE	kernel.h	22;"	d
+TimerInt	api.c	/^void TimerInt(void)$/;"	f
+WAIT1	testMain.c	27;"	d	file:
+WAIT2	testMain.c	28;"	d	file:
+_API_H	api.h	5;"	d
+_MEMORY_H	memory.h	5;"	d
+_listobj	kernel.h	/^typedef struct _listobj {$/;"	s
+action	kernel.h	/^typedef int             action;$/;"	t
+albert_free	memory.c	/^void albert_free(void *pointer)$/;"	f
+albert_malloc	memory.c	/^void *albert_malloc(uint size)$/;"	f
+appendMsg	api.c	/^static void appendMsg(mailbox *mBox, msg *tmpMsg, int type)$/;"	f	file:
+bool	kernel.h	/^typedef int             bool;$/;"	t
+create_mailbox	api.c	/^mailbox *create_mailbox(int nof_msg, int size_of_msg)$/;"	f
+create_task	api.c	/^exception create_task(void(*task_body)(), uint deadline)$/;"	f
+deadline	api.c	/^uint deadline(void)$/;"	f
+exception	kernel.h	/^typedef int			 exception;$/;"	t
+getSize	api.c	/^static int getSize(list *tmpList)$/;"	f	file:
+init_kernel	api.c	/^exception init_kernel()$/;"	f
+insert	api.c	/^static void insert(list *sentList, listobj *element,int sortedby)$/;"	f	file:
+insertR	api.c	/^static int insertR(list *sentList, TCB *TCBObj)$/;"	f	file:
+isEmpty	api.c	/^static int isEmpty(list *sentList)$/;"	f	file:
+list	kernel.h	/^} list;$/;"	t	typeref:struct:__anon3
+listobj	kernel.h	/^} listobj;$/;"	t	typeref:struct:_listobj
+mailb1	testMain.c	/^mailbox *mailb1;$/;"	v
+mailb2	testMain.c	/^mailbox *mailb2;$/;"	v
+mailbox	kernel.h	/^} mailbox;$/;"	t	typeref:struct:__anon2
+mailbox_no_wait	handshakingRandom.c	/^mailbox *mailbox_no_wait[NUMBER];$/;"	v
+mailbox_wait	handshakingRandom.c	/^mailbox *mailbox_wait[NUMBER];$/;"	v
+main	handshakingRandom.c	/^int main(void)$/;"	f
+main	testList.c	/^int main() {$/;"	f
+main	testMain.c	/^int main(void)$/;"	f
+move	api.c	/^static void move(listobj *object, list *listFrom, list *listTo,$/;"	f	file:
+moveFirst	api.c	/^static void moveFirst(list *listFrom, list *listTo, int sortedby)$/;"	f	file:
+msg	kernel.h	/^} msg;$/;"	t	typeref:struct:msgobj
+msgobj	kernel.h	/^typedef struct msgobj$/;"	s
+nBlockedMsg	kernel.h	/^        int             nBlockedMsg;$/;"	m	struct:__anon2
+nDataSize	kernel.h	/^        int             nDataSize;$/;"	m	struct:__anon2
+nMaxMessages	kernel.h	/^        int             nMaxMessages;$/;"	m	struct:__anon2
+nMessages	kernel.h	/^        int             nMessages;$/;"	m	struct:__anon2
+nTCnt	kernel.h	/^         uint           nTCnt;$/;"	m	struct:_listobj
+newList	api.c	/^static list *newList(void)$/;"	f	file:
+newListObj	api.c	/^static listobj *newListObj(TCB *TCBObj)$/;"	f	file:
+newTCBObj	api.c	/^static TCB *newTCBObj(void (*PC)(), unsigned int deadLine)$/;"	f	file:
+no_message	api.c	/^int no_message(mailbox *mBox)$/;"	f
+pBlock	kernel.h	/^        struct _listobj *pBlock;$/;"	m	struct:msgobj	typeref:struct:msgobj::_listobj
+pData	kernel.h	/^        void            *pData;$/;"	m	struct:msgobj
+pHead	kernel.h	/^         listobj        *pHead;$/;"	m	struct:__anon3
+pHead	kernel.h	/^        msg             *pHead;$/;"	m	struct:__anon2
+pMessage	kernel.h	/^         msg            *pMessage;$/;"	m	struct:_listobj
+pNext	kernel.h	/^         struct _listobj		 *pNext;$/;"	m	struct:_listobj	typeref:struct:_listobj::_listobj
+pNext	kernel.h	/^        struct msgobj   *pNext;$/;"	m	struct:msgobj	typeref:struct:msgobj::msgobj
+pPrevious	kernel.h	/^         struct _listobj		 *pPrevious;$/;"	m	struct:_listobj	typeref:struct:_listobj::_listobj
+pPrevious	kernel.h	/^        struct msgobj   *pPrevious;$/;"	m	struct:msgobj	typeref:struct:msgobj::msgobj
+pTail	kernel.h	/^         listobj        *pTail;$/;"	m	struct:__anon3
+pTail	kernel.h	/^        msg             *pTail;$/;"	m	struct:__anon2
+pTask	kernel.h	/^         TCB            *pTask;$/;"	m	struct:_listobj
+printList	api.c	/^static void printList(list *sentList)$/;"	f	file:
+rINTMOD	kernel_hwdep.h	18;"	d
+rINTMSK	kernel_hwdep.h	20;"	d
+rINTPND	kernel_hwdep.h	19;"	d
+rSYSCON	kernel_hwdep.h	17;"	d
+rTCON0	kernel_hwdep.h	14;"	d
+rTDAT0	kernel_hwdep.h	12;"	d
+rTEST	kernel_hwdep.h	9;"	d
+rTPRE0	kernel_hwdep.h	13;"	d
+readylist	api.c	/^list *readylist;$/;"	v
+receive_no_wait	api.c	/^exception  receive_no_wait(mailbox *mBox, void *Data)$/;"	f
+receive_wait	api.c	/^exception receive_wait(mailbox *mBox, void *Data)$/;"	f
+removeFirst	api.c	/^static void removeFirst(list *sentList)$/;"	f	file:
+removeFirstMsg	api.c	/^static void removeFirstMsg(mailbox *mBox)$/;"	f	file:
+removeList	api.c	/^static void removeList(list *sentList)$/;"	f	file:
+removeMsg	api.c	/^static void removeMsg(mailbox *mBox, msg *tmpMsg)$/;"	f	file:
+removeTask	api.c	/^void removeTask()$/;"	f
+remove_mailbox	api.c	/^exception remove_mailbox(mailbox *mBox)$/;"	f
+run	api.c	/^void run()$/;"	f
+send_no_wait	api.c	/^exception send_no_wait(mailbox *mBox, void *Data)$/;"	f
+send_wait	api.c	/^exception send_wait(mailbox *mBox, void *Data)$/;"	f
+set_deadline	api.c	/^void set_deadline(uint deadline)$/;"	f
+set_isr	kernel_hwdep.c	/^unsigned int set_isr( unsigned int newCSR ) {$/;"	f
+set_ticks	api.c	/^void set_ticks(uint nTicks)$/;"	f
+task1	testList.c	/^void task1() {$/;"	f
+task_client	handshakingRandom.c	/^void task_client(void)$/;"	f
+task_deadline_1	testMain.c	/^void task_deadline_1(void)$/;"	f
+task_deadline_2	testMain.c	/^void task_deadline_2(void)$/;"	f
+task_idle	api.c	/^static void task_idle(void)$/;"	f	file:
+task_mailbox	testMain.c	/^void task_mailbox(void)$/;"	f
+task_memory	testMain.c	/^void task_memory(void)$/;"	f
+task_no_wait_1	testMain.c	/^void task_no_wait_1(void)$/;"	f
+task_no_wait_2	testMain.c	/^void task_no_wait_2(void)$/;"	f
+task_server	handshakingRandom.c	/^void task_server(void)$/;"	f
+task_terminate	testMain.c	/^void task_terminate(void)$/;"	f
+task_ticks_master	testMain.c	/^void task_ticks_master(void)$/;"	f
+task_ticks_slave	testMain.c	/^void task_ticks_slave(void)$/;"	f
+task_wait_1	testMain.c	/^void task_wait_1(void)$/;"	f
+task_wait_2	testMain.c	/^void task_wait_2(void)$/;"	f
+terminate	api.c	/^void terminate()$/;"	f
+tickCounter	api.c	/^uint tickCounter;$/;"	v
+ticks	api.c	/^uint ticks(void)$/;"	f
+timer0_start	kernel_hwdep.c	/^void timer0_start(void)$/;"	f
+timerlist	api.c	/^list *timerlist;$/;"	v
+uint	kernel.h	/^typedef unsigned int    uint;$/;"	t
+wait	api.c	/^exception wait(uint nTicks)$/;"	f
+waitinglist	api.c	/^list *waitinglist;$/;"	v

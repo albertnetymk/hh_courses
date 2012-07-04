@@ -1,0 +1,3 @@
+Implemented IPC. Didn't spend much time on hardware dependent stuff.
+
+This project covers heavy usage of malloc (memory management), struct, and pointer, one great help for the transition from basic to intermediate level.
