@@ -1,0 +1,4 @@
+Really bad start on web application development. In my defense, this course didn't use state-of-art web stack. Therefore, I found it a little hard to
+pick up. Really looking forward to seeing it taught using RoR.
+
+It's one empty project. It's very embarrassing that I didn't learn anything.
