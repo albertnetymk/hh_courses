@@ -1,0 +1,5 @@
+Try to visualize data from database. Since the model is quite complicated, the database is a real mess. Started to use latex at least.
+
+The intention is to use Java to do the data extraction/analysis, and octave to do the visualization.
+
+This project is here only for archive purpose.

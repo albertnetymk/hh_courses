@@ -1,0 +1,121 @@
+\documentclass{article}
+\usepackage[a4paper]{geometry}
+\usepackage{syntonly}
+\usepackage{verbatim}
+\usepackage{array}
+%\syntaxonly
+
+\begin{document}
+\section{Background, objective and goal}
+\begin{table}[h]
+    \begin{tabular}{| p{14.5cm} |}
+	\hline \\ [0.5ex]
+	Background \\ [1ex]
+	Large quantities of paper are produced and shipped every day at a paper mill. Several trucks are involved to handle all these materials.
+
+	The situation is explained subsequently:
+	\begin{enumerate}
+	    \item
+		Paper reels are produced and coming out on a conveyor belt.
+	    \item
+		From conveyor belt they are transported to intermediate storage or to immediate shipping area.
+	    \item
+		From intermediate storage they are later transported to shipping area(container, train, lorry).
+	\end{enumerate}
+	\\ [-2ex] \hline \\ [-2ex]
+
+	Objective \\ [1ex]
+	To develop a presenting and simulation environment to test techniques that can be used optimize the material handling. \\
+	\\ [-2ex] \hline \\ [-2ex]
+
+	Goal \\ [1ex]
+	To convey information from the database, in order to do the further optimization.\\
+	\\ [-2ex] \hline \\ [-2ex]
+
+	Limitation
+	\begin{enumerate}
+	    \item
+		Possible optimization approach will not be proposed or simulated.
+	    \item
+		The NEWWHLOCCODE or OLDWHLOCCODE of data have to be among the 180 places, otherwise we will not process them.
+	    \item
+		The reel damaging reason is not presented.
+	    \item
+		The factory map will not be exactly presented, for we are just trying to convey the tracks of trucks. How the factory is constructed is not
+		the point. Therefore, we will simplify the process by plotting each cell as one cell.
+	    \item
+		The distance will be presented with center meter precision.
+	\end{enumerate} \\ \hline
+
+    \end{tabular}
+\end{table}
+\newpage
+
+\section{Requirement}
+\begin{table}[h]
+    \begin{tabular}{| p{14.5cm} |}
+	\hline \\ [0.5ex]
+	Product requirement
+	\begin{itemize}
+	    \item
+		The situation expressed in the form of database is presented in the form that is easily understandable for human.
+	\end{itemize}
+	\\ [-2ex] \hline \\ [-2ex]
+	Project requirement
+	\begin{itemize}
+	    \item
+		The simulation environment must have the ability to present the user with the total distance based on each truck and all trucks.
+	    \item
+		The simulation environment must have the information based on each reel, such as the total transported distance, the number of
+		movement before it is shipped out, the period of time it spends inside factory.
+	    \item
+		The simulation environment must have the information concerning the usage of all cells with the passage of time.
+	    \item
+		The simulation environment must have the ability to illustrate the trucks' path.
+	    \item
+		The simulation environment must have a graphic interface to illustrate the above information.
+	    \item
+		The simulation environment must keep track of the damaging of reels, such as when the reel was damaged.
+	    \item
+		As for the WHLOCCODE is one capital letter, the simulation software could have the ability to seek the really location by
+		referencing other reels, that share the same order code as this one.
+	    \item
+		The simulation environment could have the ability to present the statistic information of the above variables, such as  total
+		transported distance, the number of movement, etc.
+	    \item
+		More is coming.
+	\end{itemize}
+	\\ [-2ex] \hline \\ [-2ex]
+	Prerequisites
+	\begin{itemize}
+	    \item
+		The information about StoraEnso production system database, such as how the data is gathered, and the platform this database is using.
+	    \item
+		Periodic reference must be provided during the execution of this project.
+	\end{itemize}
+	\\ \hline
+    \end{tabular}
+\end{table}
+\section{Milestones}
+\begin{itemize}
+    \item
+	Specify requirement and management triangle(triple constraint).
+    \item
+	Compose the project plan.
+    \item
+	Extract relevant data.
+    \item
+	Validate extracted data.
+    \item
+	Specify needed statistics.
+    \item
+	Sketch presentation and simulation environment.
+    \item
+	Determine to what tools to use in this project.
+    \item
+	Present result to StoraEnso.
+    \item
+	Final presentation to StoraEnso.
+\end{itemize}
+
+\end{document}

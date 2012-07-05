@@ -1,0 +1,152 @@
+\documentclass{report}
+\usepackage{syntonly}
+\usepackage{verbatim}
+\usepackage{array}
+%\syntaxonly
+
+\begin{document} 
+\title{Project Plan} 
+\maketitle 
+
+\begin{table}[h]
+\begin{tabular}{| l | l |}
+	\hline
+	Project name & Material handling \\
+	\hline
+	Client/Sponsor & StoraEnso plant in Hylte \\
+	\hline
+\end{tabular}
+\end{table} 
+
+\section{Executive summary}
+Firstly, evaluate the data coming from the company production database, and reach the consensus how to deal with the invalid data. Develop one graphic 
+user interface, using which users could easily understand the situation of the mill from different perspective.
+
+\section{Background, objective and goal}
+\begin{table}[h]
+\begin{tabular}{| p{12cm} |}
+
+	\hline
+	Background \\
+	\\
+	Large quantities of paper are produced and shipped every day at a paper mill. Several trucks are involved to handle all these materials. 
+
+	The situation is explained subsequently:
+	\begin{enumerate}
+	\item
+	Paper reels are produced and come out on a conveyor belt.
+	\item
+	From conveyor belt they are transported to intermediate storage or to immediate shipping.
+	\item
+	From intermediate storage they are later transported to shipping (container, train, lorry).
+	\end{enumerate}
+		\\
+
+	\hline
+		Objective \\
+		\\
+		To develop a simulation environment to test techniques that can be used optimize the material handling. \\
+	
+	\hline
+		Goal \\
+		\\
+		To convey information from the database, in order to do the further optimization.\\
+
+	\hline
+		Limitation \\
+		\\
+		Possible optimization approach will not be proposed or simulated \\
+
+	\hline
+
+\end{tabular}
+\end{table}
+
+\section{Requirement specification}
+Requirement form \\
+\begin{table}[h]
+\begin{tabular}{| p{12cm} |}
+	\hline
+	Product requirement \\
+	\begin{itemize}
+	\item
+	The situation expressed in the form of database is presented in the form that is easily understandable for human.
+	\end{itemize}
+	\\
+
+	\hline
+	Project requirement \\
+	\begin{itemize}
+	%\item
+	%The simulation environment must have a graphic interface, where different suggested solutions or improvements can be evaluated.
+	\item
+	The simulation environment must be a copy of the StoraEnso plant in Hylte.
+	\item
+	The simulation environment must have the function to extracting data from the StoraEnso production system database.
+	\item
+	The simulation environment must have the ability to present the user with the total distance based on each truck and all trucks.
+	\item
+	The simulation environment must have the information concerning the usage of all cells.
+	\item
+	The simulation environment should have the ability to illustrate the production flow at the StoraEnso plant.
+	\item
+	The function of extracting data from StoraEnso production system database could be a software.
+	\end{itemize}
+	\\
+	\hline
+	Prerequisites \\
+	\begin{itemize}
+	\item
+	The information about StoraEnso production system database, such as how the data is gathered, and the platform this database is using.
+	\item
+	Periodic reference must be provided during the execution of this project.
+	\end{itemize}
+	\\
+	\hline
+\end{tabular}
+\end{table}
+
+\section{Milestones, activities and schedule}
+\subsection{Milestone plan}
+	\begin{itemize}
+	\item
+	Construct the distance matrix from the plant map given that all trucks are moving between 2 cells directly.
+	\item
+	Obtain the valid data from the raw data.
+	\item
+	Get the statistical information of usage of cells.
+	\item
+	Construct the map of the mill.
+	\item
+	Get the statistical information of trucks.
+	\item
+	Associate all information obtained before with the map.
+	\end{itemize}
+	
+\subsection{Activity list}
+	\begin{table}[h]
+	\begin{tabular}{|m{0.1cm} | m{5cm} | m{5cm} | m{1.5cm} | m{1.5cm} |}
+	\hline
+	1 & Evaluate the data in the database, and determine how to deal with invalid data  & Project sponsor and engineers from Hylte & May 17th 10:00 AM 
+	& May 17th 12:00 PM \\
+	\hline
+	%2 & Design the \hline
+	2 & Obtain valid data after preprocessing the raw data from database & Project members & May 18th & May 31th \\
+	\hline
+	3 & Gather the information from the parsed data and extract the statistic information about usage of cell & Project members & June 1th & June 7th 
+	\\
+	\hline
+	4 & Construct the map of the mill & Project members & May 17th & June 18th \\
+	\hline
+	5 & Illustrate the production flow in the simulation environment & Project members & June 19th & June 29th \\
+	\hline
+	6 & Construct the distance matrix & Project members & May 17th & May 31th \\
+	\hline
+	
+	\end{tabular}
+	\end{table}
+
+\subsection{Gantt chart}
+Please see the open office file.
+
+\end{document}
