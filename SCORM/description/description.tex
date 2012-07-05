@@ -1,0 +1,70 @@
+\documentclass[11pt]{report}
+\begin{document}
+\title{Project Description}
+\author{Albert(Mingkun)}
+\maketitle
+
+\section{Introduction}
+A Learning Management System(LMS) is a software application for the administration, documentation, tracking, and reporting of training programs, 
+classroom and online events, e-learning programs, and training content.
+\subsection{SCORM}
+SCORM is a set of technical standards for e-learning software products. SCORM tells programmers how to write their code so that it can ``play well'' 
+with other e-learning software. Specifically, SCORM governs how online learning content and Learning Management Systems (LMSs) communicate with each 
+other.
+
+\subsubsection{Version}
+\begin{itemize}
+	\item
+		SCORM 2004
+
+		4th Edition Released (March 31, 2009) — more stringent interoperability requirements, more flexible data persistence.
+	\item
+		SCORM Cloud
+
+		The web is full of learning opportunity. But how to take advantage of it? How to connect what people do out on the web back to where you 
+		normally track learning?
+
+		You can reach learners where they are rather than waiting for them to come to your LMS.
+
+		In addition to supplying best of class SCORM, SCORM Cloud serves as a connection point between your LMS and the rest of the internet.
+\end{itemize}
+
+\subsubsection{Overview}
+SCORM specifiers that content should:
+\begin{itemize}
+	\item
+		Be packaged in a ZIP file.
+	\item
+		Be described in an XML file.
+	\item
+		Communicate via JavaScript.
+	\item
+		Sequence using rules in XML.
+\end{itemize}
+SCORM is composed of three sub-specifications:
+\begin{itemize}
+	\item
+		The Content Packaging section specifies how content should be packaged and described. It is based primarily on XML.
+	\item
+		The Run-Time section specifies how content should be launched and how it communicates with the LMS. It is based primarily on ECMAScript 
+		(JavaScript).
+	\item
+		The Sequencing section specifies how the learner can navigate between parts of the course (SCOs). It is defined by a set of rules and 
+		attributes written in XML.
+\end{itemize}
+
+
+\section{Task}
+There are some LMSs, with some existing content. All of them are SCORM compliant. We want to import some information from other LMSs. Hopefully, we 
+can send some information to other LMSs as well.
+\subsection{Scenario}
+Some companies have their own LMS, with some preexistent questions for their customers or employees to take. However, they do not have the appropriate 
+grading system. Therefore, these companies want them to take the question in our non-SCORM LMS, with the questions created in their own LMS, possibly, 
+combined with some questions in our LMS as well, then get the results. The results can be accessed by any SCORM compliant LMSs.
+\section{Method}
+It’s easy to put information on a website. It’s another thing to know whether anyone is learning that information. SCORM Cloud fills that gap. 
+Unfortunately, in this case, it is not necessary to use it, for learner will go to the LMS to do the training. Ordinary SCORM suffices.
+
+Various kinds of LMSs need to communicate with each other. SCORM defines the standards, so we need to make our LMS compliant, so that it can import 
+and export SCORM compliant package. In this way, different LMSs can communicate with each other.
+\end{document}

@@ -1,0 +1,129 @@
+\documentclass{report}
+\usepackage[left=3cm]{geometry}
+\usepackage{syntonly}
+\usepackage{verbatim}
+\usepackage{array}
+\usepackage{tabularx}
+\setlength{\extrarowheight}{5pt}
+%\syntaxonly
+
+\begin{document} 
+\title{Project Plan} 
+\maketitle 
+
+\begin{table}[h]
+	\begin{tabularx}{\textwidth}{| l | X |}
+	\hline
+	Project name & Communication between various e-learning system using SCORM \\
+	\hline
+	Client/Sponsor & Entergate Company \\
+	\hline
+\end{tabularx}
+\end{table} 
+
+\section{Executive summary}
+Firstly, do some theoretical research on SCORM and related information. Secondly, understand the internal structure of one Package Interchange 
+File(PIF). Then, extract related information form it, and integrate them into the LMS in Entergate.
+
+\section{Background, objective and goal}
+\begin{table}[h]
+	\begin{tabularx}{\textwidth}{| X |}
+	\hline
+	Background \\
+	\\
+	In the late 1990s, the United States Department of Defense realized that they were procuring the same training many times over and over again but 
+	could not reuse it across departments, because each department had its own Learning Management System(LMS). In those days, each LMS had its own 
+	proprietary content format, which encouraged vendor lock-in. In 1999 an executive order tasked a small research laboratory, Advanced Distributed 
+	Learning(ADL), to ``develop common specifications and standards for e-learning.'' Rather than starting from scratch, ADL harmonized the work of 
+	existing standards organizations like the AICC, IMS and the IEEE LTSC into a cohesive reference model. SCORM was released in 2001 and was quickly 
+	adopted by both government and industry. Today it is the de facto standard for E-learning interoperability. \\ [1ex]
+
+	\hline
+		Objective \\
+		\\
+		Utilizing the existing SCORM standard to achieve the communication between different LMSs. \\ [1ex]
+	
+	\hline
+		Goal \\
+		\\
+		SCORM compliant contents can be imported smoothly into our LMS. \\  [1ex]
+%	\hline
+%		Limitation \\
+%		\\
+	\hline
+\end{tabularx}
+\end{table}
+
+\newpage
+\section{Requirement specification}
+Requirement form \\
+\begin{table}[h]
+	\begin{tabular}{| p{15cm} |}
+		\hline
+		Product requirement \\
+		\begin{itemize}
+			\item
+				Compare the pros and cons of different techniques enabling communication between different LMSs, and decide which one is the best in 
+				this case.
+			\item
+				The learning contents from one LMS must be used in our LMS, smoothly.
+			\item
+				In the first case, the solution must enable that one whole package, which contains some preexistent questions, can be used as one test
+				for users to take.
+			\item
+				In the second case, the solution must enable that several questions in this package, combined with our questions, can constitute the 
+				test for users to take.
+			\item
+				The solution could have the ability to present the information we imported to users.
+		\end{itemize}
+		\\
+
+		\hline
+		Project requirement \\
+		\begin{itemize}
+			\item
+				Finished before May 1st.
+			\item
+				The method should be based on SCORM.
+		\end{itemize}
+		\\
+		\hline
+		Prerequisites \\
+		\begin{itemize}
+			\item
+				Detailed description on LMS in Entergate.
+			\item
+				Constant consultancies on SCORM and LMS.
+		\end{itemize}
+		\\
+		\hline
+	\end{tabular}
+\end{table}
+
+\section{Milestones, activities and schedule}
+\subsection{Milestone plan}
+\begin{itemize}
+	\item
+		Be able to import Manifest Basics Content Example(MBCE) from ADL to esTracer.
+	\item
+		Present the information we get from this package to users in our LMS.
+\end{itemize}
+\subsection{Activity list}
+\begin{table}[h]
+	\begin{tabular}{|m{0.1cm} | m{5cm} | m{5cm} | m{2.5cm} | m{2.5cm} |}
+		\hline
+		1 & Theoretical research on SCORM, especially Content packaging & Project members & February 10th & February 28th \\
+		\hline
+		2 & Understand jQuery and MVC, which are used in LMS & Project members & February 10th & February 28th \\
+		\hline
+		3 & Understand internal structure of LMS in Entergate & Entergate staff and project members & February 17th & March 15th \\
+		\hline
+		4 & Implement import function & Entergate staff and project members & March 15th & March 31st \\
+		\hline
+		4 & Implement present function & Entergate staff and project members & April 1st & April 30th \\
+		\hline
+		5 & Writing the final report & Entergate staff and project members & May 1st & May 7th \\
+		\hline
+	\end{tabular}
+\end{table}
+\end{document}

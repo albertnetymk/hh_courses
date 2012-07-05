@@ -1,0 +1,66 @@
+\chapter{Discussion and Conclusion}
+\thispagestyle{empty}
+In this chapter, author's personal opinion is presented towards some technologies in this project. In addition, the future work is discussed so that 
+someone can continue with this.
+\section{Modular programming}
+Thanks to modular programming applied in the system architecture, it is possible to integrate the new function to it without fully understanding all 
+of it. The biggest challenge in such project is to find the right place, and insert the new function.
+
+In this project, the traditional approach is taken to find the portion of code responsible for the import function. Based on the knowledge of MVC 
+routing, several breakpoints are set to check the execution flow in order to get one high view of this system architecture. This approach will always 
+work so long as the developer choose the appropriate abstraction level.
+
+After detecting the right place, inserting the new function is straightforward especially if the function is not very complex. However, great care 
+needs to be taken to ensure the modularity. This requirement is quite subtle, and there is no absolute criteria to determine whether it is right or 
+not.
+
+Because of the constrain of ASP.NET MVC, it is not easy to add one new function. Therefore, the original function is expanded so that it has the new 
+functionality. Hopefully, this will keep the modularity of this system.
+\section{ASP.NET VS ASP.NET MVC}
+Because the name ``ASP.NET MVC'' contains the ``ASP.NET'', the first impression would be that ASP.NET MVC is based on ASP.NET technology. In fact, 
+ASP.NET MVC is one extension of the original framework, but in the end user point of view, the two do not share much, neither in syntax nor design. 
+Microsoft has tried to make windows form model development for web application development. Consequently, this approach breaks the stateless nature 
+of web, which makes this approach not suitable for large and complex project \cite{mvc_vs_webform}. In ``ASP.NET MVC'', ``ASP'' means the ASP engine, 
+to generate the HTML files on the fly, ``.NET'' means the .NET framework, which is the software framework of almost all Microsoft product, ``MVC'' 
+means the model-view-controller pattern.
+
+From my experience of learn them, ASP.NET MVC is more clear and easier to pick up. It gives the developer one high view to see the whole picture 
+without being bother by all kinds of details. In other words, it is more like the top-down programming paradigm.
+\section{MVC architect}
+This architect is particular suitable for large application, for the ``separation of concerns'' is expressed to great extent. Among the three 
+components, model is the ``heart'' of the application, which is also the most fundamental and complex one. I didn't realize that until I encountered 
+much obstacles just reading the code without fully understanding how the model works, which reflects how tables in the database relate to each other.
+In fact, it makes perfect sense that model is the core, for controllers retrieve information from model and send it view and get information from 
+view and send it to model. It's impossible for developers to understand the behavior of controllers without knowing the structure of model.
+\section{C Sharp Programming Language}
+After using C Sharp in this project for approximately two month, my personal opinion is that it is really an enterprise-level language. By 
+enterprise-level, I mean it is quite concise compared to some other languages.(Imagine that one language can finish the work using five lines while 
+another will have to use ten lines. The most significant part is that all these do not break readability.) At first, it might seem alien language, 
+but once one get used to the syntax, he or she can almost generate working code nearly as fast as he or she can type.
+
+Microsoft went great length to make this language concise without breaking the logic of the whole picture. Two examples will be presented in here.
+The first example will be ``properties''. Properties are type members that provide functionality that is a cross between fields and methods. One can 
+read and write to a property just like a field. Additionally, code could be defined that runs whenever someone reads to or writes from a property, 
+similar to methods \cite{c_sharp_property}. The counterpart in Java would be ``setters'' and ``getters'', but what could be easier than the ``='' 
+symbol?
+
+The second examples would be the extension method \cite{c_sharp_extension_method}. Extension methods enable developers to ``add'' methods to existing 
+types without creating a new derived type, recompiling, or otherwise modifying the original type. The counterparts of C Sharp have similar features. 
+Take Java as one example, such functionality would be achieved by using composition of super class. However, this syntactic sugar becomes more 
+obvious with LINQ (Language Integrated Query) \cite{linq}, which utilizes extension method a lot. However, LINQ will probably not be that powerful as 
+it seems. While developing one system, that interacts with database, developers usually set up a abstraction layer of APIs so that this system could 
+cope with various databases. Technically, LINQ is one more sophisticated way achieving it. Unfortunately, most systems using LINQ are using SQL 
+servers from Microsoft, which hides this power to some extent.
+
+Influenced by C++, Java, C Sharp inherits the merits of them and improves the pitfalls. With the help of a plethora of libraries in ``.NET 
+framework'', C Sharp is indeed one competitive language.
+\section{Future Work}
+This project only covers the very first step to make one LMS SCORM compliant. In fact, there are three high level tasks to undertake. Firstly, 
+developers will need to create an import mechanism to ingest SCORM compliant content into the system. This involves parsing an XML document called 
+the imsmanifest and it's associated metadata to discover the structure of the content. This is covered in this project. Secondly, developers will 
+need to develop a launching and tracking mechanism to deliver the content. The heart of this system is an ECMAScript (JavaScript) API that allows the 
+content to persist and retrieve data according to the CMI data model. In other words, these APIs enable enable the communication between LMS and SCO. 
+The final step is to develop an implementation of the SCORM / IMS sequencing engine that controls the navigation between parts of a SCORM compliant 
+course (this last step is the trickiest).
+
+The last two tasks are untouched in this project. Therefore, there is still a long way to go before ``esTracer'' is fully SCORM compliant.

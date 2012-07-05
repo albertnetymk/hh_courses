@@ -1,0 +1,56 @@
+\chapter{Introduction}
+\thispagestyle{empty}
+In this chapter, introduction to this project is covered, including background, objectives, limitations, etc.
+\section{Background}
+Essentially, E-learning is the transferring of skills and knowledge through computer and networks. With the rapid development of Internet, E-learning 
+is becoming more and more popular and practical. E-learning applications include Web-based learning, computer-based learning, virtual classroom 
+opportunities and digital collaboration. This project is proposed by Entergate company (www.entergate.se), and used to extend the original 
+functionality of their product ``esTracer'', which is the Learning Management System from the company.
+\section{Related work}
+When it comes to E-learning, Advanced Distributed Learning has to be mentioned. The Advanced Distributed Learning (ADL) Initiative is the result of 
+collaborative efforts to harness the power of information technologies to deliver high-quality, easily accessible, adaptable, and cost-effective 
+education and training \cite{adl_intro}. More information about ADL will be covered when the origin of Sharable Content Object Reference Model 
+(SCORM), which is one standard related to E-learning and will be explained in detail in next chapter, is addressed.
+
+The most prestigious company providing SCORM related solution is Rustici Software \cite{rustici_software}. They make SCORM easy by creating the best 
+SCORM products on the market. In fact, ADL is sponsoring them to conduct the Tin Can research, which is meant to be the successor of SCORM. Further 
+information can be found in section~\ref{sec:scorm_variation}.
+\section{Objectives}
+Without following the standards, endless of time and money will be wasted for ``reinventing the wheel''. Considering SCORM is the de facto standard 
+in E-learning system, the objective of this project is to make ``esTracer'' SCORM compliant. This project focuses on importing and exporting SCORM 
+compliant packages, and present the content of packages without providing communication with the Learning Management System(LMS). This project is one 
+preliminary work of making ``esTracer'' SCORM compliant.
+
+The whole mission is broken into four tasks:
+\begin{itemize}
+	\item Importing whole package \\
+		This is used when the whole packaged is meant to be launched by LMS directly.
+	\item Importing all SCOs in this package \\
+		This will enable course content authors to create complete tests out of all the SCOs, which could then be exported as SCORM compliant 
+		packages or launched by LMS.
+	\item Exporting package \\
+		This could be used when different LMSs want to share packages.
+	\item Launching SCO \\
+		Via this, users can interact with the SCO. (In this project, the communication between SCO and LMS is not implemented, so no records will
+		be save after finishing this SCO.)
+\end{itemize}
+\section{Limitation}
+Considering E-learning is one quite broad concept, this project will only concern about Web-based learning E-learning system, specifically the 
+product from Entergate company. The implementation only applies to ``esTracer'', but the methodology is general, which can be used in other systems.
+
+Make one Learning Management System SCORM compliant requires launching the content in one frameset or one new windows, then to provide the APIs to 
+enable the communication between the Learning Management System and the content. This project only covers the importing, exporting and previewing the 
+content of SCO without providing the communication APIs.
+\section{Outline}
+In Web-based E-learning System and SCORM chapter, E-learning and SCORM is addressed to give the audiences the fundamental concepts concerning E-learning 
+and the de facto standard. The standard is explained thoroughly because this project depends on it heavily.
+
+In the Method chapter, the working environment and methodology adopted is presented in detail. The ``esTracer'' is explained from a technical perspective
+so that modification could be made in order to extend its functionality. Afterwards, how each task is solved, and why one particular approach is 
+chosen are explained.
+
+In the Result chapter, one package from ADL is used to demonstrate the use of functionality concerning SCORM in ``esTracer'', such as importing and 
+presentation.
+
+In the Discussion and Conclusion chapter, personal opinion about various technology used in this project is expressed. Since this project is just one 
+preliminary task of making ``esTracer'' SCORM compliant, future work would be done, some of which are discussed.
