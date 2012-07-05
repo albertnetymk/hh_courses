@@ -1,0 +1,67 @@
+\section*{Solution}
+For sub problem 1:
+\begin{quote}
+\subsection{Apache2}
+\subsubsection*{Installation}
+\begin{quote}
+\emph{sudo apt-get install apache2}
+\end{quote}
+\subsubsection*{Configuration}
+It is reasonable to deal with all files in current user's home directory, so we need to tell Apache where we put our html files and script files. In this project, we put all the files related to the web page or sub problem 1 into /home/username/html. \\
+We should open the file `` /etc/apache2/sites-available/default '' as a super user.
+\begin{quote}
+\emph{sudo gedit /etc/apache2/sites-available/default}
+\end{quote}
+We should perform the following changes to point the files present in the folder html.(/home/username/html/)
+\begin{quote}
+DocumentRoot /home/username/html/ \\
+$<$Directory /home/username/html$>$ \\
+ScriptAlias /bin/ /home/username/bin \\
+$<$Directory ``/home/username/bin''$>$  \\
+\end{quote}
+\subsection{PHP}
+\begin{quote}
+\emph{sudo apt-get install php5}
+\end{quote}
+\subsection{Scripts}
+Put ``process1.php process2.php read.php project.html web.css queue \footnote{All necessary files and explanations will be found in Appendix}'' in html folder. \\
+(create html folder if this folder does not exist using following commands:
+\begin{quote}
+cd\\
+mkdir html
+\end{quote}).
+\end{quote}
+The following are for sub problem 2:
+\begin{quote}
+\subsection{MPD\&MPC}
+\begin{quote}
+\emph{sudo apt-get install mpc mpd} \\
+\emph{sudo ln -s \url{~}/Music /var/lib/mpd/music} \\
+\end{quote}
+The second command creates a soft symbolic link in /var/lib/mpd/music, pointing to Music folder in home directory.
+\subsection{Scripts\&Music}
+Put``play \footnote{All necessary files and explanations will be found in Appendix}'' in bin folder.\\
+Put the three songs in Music folder.\\
+(create bin folder if this folder does not exist using following commands:
+\begin{quote}
+cd\\
+mkdir bin
+\end{quote}).
+\subsection{Cron}
+We use crontab to execute the play script for every minute.  
+\begin{quote}
+crontab -e
+\end{quote}
+will edit crontab, and the following need to be written in the crontab.
+\begin{quote}  
+ * * * * * \url{~}/bin/play
+\end{quote}
+Here the ``play''script which is present in the bin folder will be executed for every minute.
+\end{quote}
+Once we finished our project, we utilized our University wireless network to completely test our project.
+
+We used two to three laptops to test our project in which we made one of our laptop as server and we copied all the necessary scripts to test our project to the server. Then with the help of other two laptops, we logged into our html page by typing the server's IP address and then we gave the songs of our wish as an input to the server. 
+
+we enabled crontab to exucute our scripts every minute and we tested whether the input in the form of songs were played sequentially like a queue for every  minute. We also cross-checked whether the input from the queue was deleted once it was played successfully using the music player.
+
+ These are testing methodologies we used to test the efficiency of our project.

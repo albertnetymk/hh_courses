@@ -1,0 +1,162 @@
+\appendix
+\chapter{Source Code}
+\subsection*{project.html}
+\begin{quote}
+$<$!DOCTYPE html PUBLIC ``-//W3C//DTD XHTML 1.0 Strict//EN''\\
+``http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd''$>$\\
+$<$html$>$\\
+
+$<$head$>$\\
+	$<$title$>$MUSIC$<$/title$>$\\
+	$<$link rel=``stylesheet'' type=``text/css'' href=``web.css'' /$>$\\
+$<$/head$>$\\
+
+$<$body$>$\\
+
+$<$h1$>$$<$strong$>$Music World$<$/strong$>$$<$/h1$>$\\
+
+$<$h2$>$Input the name of a song$<$/h2$>$\\
+$<$form action=``process1.php'' method=``post''$>$\\
+Enter name:$<$input name=``1'' type=``text'' /$>$\\
+$<$input  type=``submit'' value=``submit'' /$>$\\
+$<$/form$>$\\
+
+$<$h2$>$Select the name of a song$<$/h2$>$\\
+$<$form action=``process2.php'' method=``post''$>$\\
+$<$select name=``2''$>$\\
+	$<$option value=``sunshine in the rain''$>$sunshine in the rain$<$/option$>$\\
+	$<$option value=``take me to your heart''$>$take me to your heart$<$/option$>$\\
+	$<$option value=``my heart will go on''$>$my heart will go on$<$/option$>$\\
+$<$/select$>$\\
+$<$input  type=``submit'' value=``submit'' /$>$\\
+$<$/form$>$\\
+
+$<$/body$>$\\
+$<$/html$>$\\
+\end{quote}
+
+
+
+\subsection*{read.php}
+We used ``read.php'' to read the input and to put the input in the queue.
+\begin{quote}
+$<$?php
+                function read(\$data)\{ \\
+                \$queue = "queue"; \\
+                \$filehandle= fopen(\$queue, `a') or die("can't open         file"); \\
+                fwrite(\$filehandle,``\$data''.''\textbackslash n''); \\
+                fclose(\$filehandle);\} \\
+?$>$
+\end{quote}
+The queue file is opened in append mode and it is captured by the variable \$filehandle. \\
+\begin{quote}
+\$filehandle= fopen(\$queue, `a') or die("can't open file"); \\
+\end{quote}
+Then the user's input is written into the file queue. \\
+\begin{quote}
+fwrite(\$filehandle,``\$data''.``\textbackslash n''); \\
+\end{quote}
+Once all nput has been stored in the queue, the file has to be closed.
+\begin{quote}
+fclose(\$filehandle);
+\end{quote}
+
+
+
+\subsection*{process1.php}
+We used the script process1 to get the input from the user through keyboard.
+\begin{quote}
+$<$?php \\
+require(``/home/albertnet/html/read.php''); \\
+\$data=\$\_POST[`1']; \\
+switch(\$data)\{ \\
+        case ``sunshine in the rain'':\$flag=1;break; \\
+	case ``take me to your heart'':\$flag=1;break; \\
+	case ``my heart will go on'':\$flag=1;break; \\
+	default:\\
+		\$flag=0;\\
+		echo ``there is no such song'';\}\\
+if(\$flag==1)\{\\
+echo \$data$<$br /$>$;\\
+read(\$data);\}\\
+?$>$
+\end{quote}
+
+If the input given by user is any of these 3, then the flag is set to 1. For all other input it will be 0, because there are only 3 songs which are present in the music folder. This is achieved by making use of switch case.
+
+If the flag is set to 1 , then the corresponding input is taken as the input to the function read.  
+
+\subsection*{process2.php}
+\begin{quote}
+$<$?php\\
+require(``read.php'');\\
+\$data=\$\_POST[`2'];\\
+echo ``\$data$<$br /$>$'';\\
+read(\$data);\\
+?$>$\\
+\end{quote}
+
+
+As we see, we make use of the function read() to put the user’s input into the queue.
+
+\subsection*{play}
+\begin{quote}
+\#!/bin/bash
+PLAY=\`{} which mpc\`{} \\
+music=\`{} head -n 1 ~/html/queue\`{} \\
+if [ -n ``\$music'' ];then \\
+	tail -n +2 ~/html/queue $>$ \url{~}/html/temp \\
+	rm \url{~}/html/queue \\
+	mv \url{~}/html/temp  \url{~}/html/queue \\
+	chmod 666 ~/html/queue \\
+	if [ -z \`{} \$PLAy playlist\`{} ];then \\
+	\$PLAY ls | \$PLAY add \\
+	fi \\
+        n=\`{}\$PLAY playlist | sed -n ``/\$music/p'' | gawk \'{}{print \$1}\'{} | sed -e \'{}s/$>$//;s/)//\'{}\`{} \\
+	\$PLAY play \$n  \\
+fi
+\end{quote}
+Here the player which we selected to play the song is mpc . First song from the queue is selected  by making use of the command
+\begin{quote}
+music=\`{}head -n 1 \url{~}/html/queue\`{}
+\end{quote}
+The first song is captured by the variable music and if there is a song, then the statements present inside the if loop will be executed. 
+\begin{quote}
+tail -n +2 \url{~}/html/queue $>$ \url{~}/html/temp
+\end{quote}
+The command tail is used to capture the content from the second line to the end of the queue and it is redirected to temp.
+\begin{quote}
+rm  \url{~}/html/queue \\
+mv \url{~}/html/temp  \url{~}/html/queue
+\end{quote}
+Once the rest of the content of the queue is moved to temp, the queue is removed and then the temp file is renamed to queue. We are doing this because once the song is played it has to be removed from the queue. 
+\begin{quote}
+chmod 666 \url{~}/html/queue
+\end{quote}
+Then we are giving access right 666 to the file queue, which means we are making the file queue readable and writable by anyone.
+\begin{quote}
+n=\`{}\$PLAY playlist | sed -n ``/\$music/p'' | gawk \'{}{print \$1}\'{} | sed -e \'{}s/$>$//;s/)//\'{}\`{} \\
+	\$PLAY play \$n  \\
+\end{quote}
+The variable music contains the name of the song. The music player takes only the number as its argument. Therefore, the songs corresponding number is matched and it is captured by the variable n. Then finally we played the song by passing the number through n as an argument. 
+\chapter{Ethic discussion}
+Anyone, who find this project and want to do further development with it, should keep the original authors' name and contact remained. 
+
+Even thought this website is available from outside, it will not be used to make a profit without buying the songs' copyright.
+
+\chapter{Project Schedule}
+\begin{center}
+	\begin{tabular}{| l | p{10cm} | }
+		\hline
+		 & Work \\
+		\hline
+		Week 1 (Dec 7-14) & Install Ubuntu, set up one web server and create one web page containing necessary elements \\
+		\hline
+		Week 2 (Dec 15-32) & Write scripts achieving the function that prints the user's text input and store it in one file in web server \\
+		\hline
+		Week 3 (Dec23-30) & Pick the first line of the file and play the corresponding music in interval of 1 minute  \\
+		\hline
+		Week 4 (Dec 31-Jan 6) & Prepare the report \\ 
+		\hline
+	\end{tabular}
+\end{center}

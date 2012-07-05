@@ -1,0 +1,32 @@
+\section*{Analysis}
+The problem can be easily broken down into two sub problems.
+\begin{quote}
+\begin{enumerate}
+\item
+Clients and server interaction
+\item
+Remote control --- play music
+\end{enumerate} 
+\end{quote}
+For the first sub problem, the following tasks have to be performed.
+\begin{quote}
+\begin{itemize}
+\item 
+Install a web server and make it work properly. \\
+Available web server: Apache2, Sun Java System Web Server
+\item
+An html page has to be designed such that the user can give the name of the song as the input and he or she can also select the song from the drop-down list.
+\item
+The CGI script will be designed such that it reads the input (name of the song), stores it in the list and displays the name. \\
+Available language for CGI: bash,PHP,Perl
+\end{itemize}
+\end{quote}
+For the second sub problem, the following tasks have to be finished:
+\begin{quote}
+\begin{itemize}
+\item
+Server retireves the content of the list in FIFO fashion, plays it using a music player and removes it from the list for every minute. \\
+Available music players: mpg123,MPD\&MPC \\
+Available scheduling tool: cron \\
+\end{itemize}
+\end{quote}
