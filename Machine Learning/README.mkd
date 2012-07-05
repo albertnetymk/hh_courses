@@ -1,0 +1,4 @@
+Some fundamental knowledge on supervised learning; a little bit unsupervised learning as well. Only a few algorithms are covered. I was expecting some
+theory.
+
+The code is really mess, so I will not include it now.
