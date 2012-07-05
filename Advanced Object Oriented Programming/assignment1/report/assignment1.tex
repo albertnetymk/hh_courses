@@ -1,0 +1,24 @@
+\documentclass[a4paper, 11pt]{report}
+\usepackage[left=3cm]{geometry}
+
+
+\begin{document}
+\section{Problem 1}
+Enum.valueof will throw one IllegalArgument exception, and this exception is caught in the code, and print``Sorry, no command''.
+
+The size is 100, and the initial value is zero. In the beginning, where we declare the size and the array. We use Array.toString() to print the array.
+
+Sometimes, it fails to find the element. We use binarySearch() to find the element, while binary search can only be used for sorted array.
+
+Without the break statement, it will just continue execute the next case.
+
+\section{Problem 4}
+String is immutable, for immutable is generally easier to use and there are no obvious reasons to make them mutable.
+
+Integer is immutable, for it makes sense that one number does not change.
+
+StringBuffer is mutable, for it does not create temporary strings, if we need to construct one string using several steps.
+
+List is mutable, for it acts as one container, and its state will change as its content changes.
+
+\end{document}
