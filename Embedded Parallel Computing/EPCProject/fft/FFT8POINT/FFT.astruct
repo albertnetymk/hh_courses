@@ -1,0 +1,21 @@
+/**********************************************************
+*
+* File: FFT.astruct
+*
+* Description: FFT interface, it reads two points from two
+* different channels and writes two points to two different channels
+*
+**********************************************************/
+package FFT8POINT;
+interface FFT {
+	inbound inReal1, inImg1;
+	inbound inReal2, inImg2;
+	outbound outReal1, outImg1;
+	outbound outReal2, outImg2;
+	property int propPoints;
+	property int propCosVal;
+	property int propSinVal;
+}
+binding FFTBinding implements FFT {
+	implementation "FFT.java";
+}

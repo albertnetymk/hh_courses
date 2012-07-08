@@ -1,0 +1,20 @@
+package parallel;
+
+interface Assembler{
+	inbound in_1;
+	inbound in_2;
+	inbound in_3;
+	inbound in_4;
+	outbound out;
+
+	property int level;
+}
+binding JAssembler1 implements Assembler when (level==1){
+	implementation "Assembler1.java";
+}
+binding JAssembler2 implements Assembler when (level==2){
+	implementation "Assembler2.java";
+}
+binding JAssembler3 implements Assembler when (level==3){
+	implementation "Assembler3.java";
+}

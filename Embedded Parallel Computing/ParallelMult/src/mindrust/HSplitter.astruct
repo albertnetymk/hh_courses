@@ -1,0 +1,13 @@
+package mindrust;
+
+interface HSplitter {
+	inbound in;
+	outbound out_down, out_right;
+	property int resultCol;
+	property int innerDim;
+	property int col;
+}
+
+binding JHSplitter implements HSplitter {
+	implementation "HSplitter.java";
+}

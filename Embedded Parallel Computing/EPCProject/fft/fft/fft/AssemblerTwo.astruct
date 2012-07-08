@@ -1,0 +1,14 @@
+package fft;
+
+interface AssemblerTwo{
+    inbound in_1;
+    
+    inbound in_2;
+    outbound out;
+    
+   
+}
+binding JAssemblerTwo implements AssemblerTwo{
+    implementation "AssemblerTwo.java";
+    attribute CompilerOptions (targetSR=true) on JAssemblerTwo;
+}

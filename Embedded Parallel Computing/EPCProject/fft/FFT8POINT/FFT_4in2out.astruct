@@ -1,0 +1,20 @@
+/**********************************************************
+*
+* File: FFT_4in2out.astruct
+*
+* Description: this interface reads two points from two
+* different channels and writes two points on one channels
+*
+**********************************************************/
+package FFT8POINT;
+interface FFT_4in2out {
+	inbound inReal1, inImg1;
+	inbound inReal2, inImg2;
+	outbound outReal, outImg;
+	property int propPoints;
+	property int propCosVal;
+	property int propSinVal;
+}
+binding FFT_4in2outBinding implements FFT_4in2out {
+	implementation "FFT_4in2out.java";
+}

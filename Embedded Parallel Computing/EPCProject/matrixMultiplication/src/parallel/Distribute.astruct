@@ -1,0 +1,25 @@
+package parallel;
+
+enum Level {A1,A2,B1,B2}
+
+interface Distribute{
+    inbound in;
+    outbound out_1;
+    outbound out_2;
+    outbound out_3;
+    outbound out_4;
+
+    property Level level;
+}
+binding JMatrixA1 implements Distribute when (level==Level.A1){
+    implementation "MatrixA1.java";
+}
+binding JMatrixA2 implements Distribute when (level==Level.A2){
+    implementation "MatrixA2.java";
+}
+binding JMatrixB1 implements Distribute when (level==Level.B1){
+    implementation "MatrixB1.java";
+}
+binding JMatrixB2 implements Distribute when (level==Level.B2){
+    implementation "MatrixB2.java";
+}

@@ -1,0 +1,3 @@
+Exposed to Ambric architecture. The programming interface is quite friendly. At least, it's not very difficult to get started.
+
+I haven't get the change to clean this project, so it's really mess.

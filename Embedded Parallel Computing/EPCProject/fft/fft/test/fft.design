@@ -1,0 +1,331 @@
+package test;
+import astruct.pcie.Vio;
+import fft.AssemblerTwo;
+import fft.RealFFT;
+import fft.FinalFFT;
+import fft.FirstFFT;
+import fft.Distribute;
+
+
+interface Root{}
+binding JRoot implements Root{
+	void generate(){	
+		/*There are several variables: points, distribute_stage,
+		 * distribute number, stage.
+		 * The variable "points" is given by the user, and
+		 * distribute_stage = the logarithm of (points / 4) to the base 2 plus 1
+		 * distribute_number = points / 2 minus 1
+		 * distribute_connection = points / 2 minus 2
+		 * stage = logarithm of points/4 to the base 2
+		 * assembler_number=distribute_number
+		 * assembler_stage=distribute_stage
+		 * assume that each processor deals with 2 points
+		 */
+
+		int points=32; 
+		int distribute_stage=4;
+		int distribute_number=15;
+		int distribute_connection=14;
+		int stage=3;
+		//int assembler4_number=5;
+		//coordinates for array
+		int x, y;
+		
+		//for power calculation
+		int tmp,l;
+
+		//the number of groups and memebers;
+		int group, member, interval;
+		int tmpName;
+		//twiddle
+		int twiddle0[64];
+		twiddle0[0]=16777216;
+		twiddle0[1]=16696429;
+		twiddle0[2]=16454846;
+		twiddle0[3]=16054795;
+		twiddle0[4]=15500126;
+		twiddle0[5]=14796184;
+		twiddle0[6]=13949745;
+		twiddle0[7]=12968963;
+		twiddle0[8]=11863283;
+		twiddle0[9]=10643353;
+		twiddle0[10]=9320922;
+		twiddle0[11]=7908725;
+		twiddle0[12]=6420363;
+		twiddle0[13]=4870169;
+		twiddle0[14]=3273072;
+		twiddle0[15]=1644455;
+		twiddle0[16]=0;
+		twiddle0[17]=-1644455;
+		twiddle0[18]=-3273072;
+		twiddle0[19]=-4870169;
+		twiddle0[20]=-6420363;
+		twiddle0[21]=-7908725;
+		twiddle0[22]=-9320922;
+		twiddle0[23]=-10643353;
+		twiddle0[24]=-11863283;
+		twiddle0[25]=-12968963;
+		twiddle0[26]=-13949745;
+		twiddle0[27]=-14796184;
+		twiddle0[28]=-15500126;
+		twiddle0[29]=-16054795;
+		twiddle0[30]=-16454846;
+		twiddle0[31]=-16696429;
+		twiddle0[32]=-16777216;
+		twiddle0[33]=-16696429;
+		twiddle0[34]=-16454846;
+		twiddle0[35]=-16054795;
+		twiddle0[36]=-15500126;
+		twiddle0[37]=-14796184;
+		twiddle0[38]=-13949745;
+		twiddle0[39]=-12968963;
+		twiddle0[40]=-11863283;
+		twiddle0[41]=-10643353;
+		twiddle0[42]=-9320922;
+		twiddle0[43]=-7908725;
+		twiddle0[44]=-6420363;
+		twiddle0[45]=-4870169;
+		twiddle0[46]=-3273072;
+		twiddle0[47]=-1644455;
+		twiddle0[48]=0;
+		twiddle0[49]=1644455;
+		twiddle0[50]=3273072;
+		twiddle0[51]=4870169;
+		twiddle0[52]=6420363;
+		twiddle0[53]=7908725;
+		twiddle0[54]=9320922;
+		twiddle0[55]=10643353;
+		twiddle0[56]=11863283;
+		twiddle0[57]=12968963;
+		twiddle0[58]=13949745;
+		twiddle0[59]=14796184;
+		twiddle0[60]=15500126;
+		twiddle0[61]=16054795;
+		twiddle0[62]=16454846;
+		twiddle0[63]=16696429;
+		int twiddle1[64];
+		twiddle1[0]=0;
+		twiddle1[1]=-1644455;
+		twiddle1[2]=-3273072;
+		twiddle1[3]=-4870169;
+		twiddle1[4]=-6420363;
+		twiddle1[5]=-7908725;
+		twiddle1[6]=-9320922;
+		twiddle1[7]=-10643353;
+		twiddle1[8]=-11863283;
+		twiddle1[9]=-12968963;
+		twiddle1[10]=-13949745;
+		twiddle1[11]=-14796184;
+		twiddle1[12]=-15500126;
+		twiddle1[13]=-16054795;
+		twiddle1[14]=-16454846;
+		twiddle1[15]=-16696429;
+		twiddle1[16]=-16777216;
+		twiddle1[17]=-16696429;
+		twiddle1[18]=-16454846;
+		twiddle1[19]=-16054795;
+		twiddle1[20]=-15500126;
+		twiddle1[21]=-14796184;
+		twiddle1[22]=-13949745;
+		twiddle1[23]=-12968963;
+		twiddle1[24]=-11863283;
+		twiddle1[25]=-10643353;
+		twiddle1[26]=-9320922;
+		twiddle1[27]=-7908725;
+		twiddle1[28]=-6420363;
+		twiddle1[29]=-4870169;
+		twiddle1[30]=-3273072;
+		twiddle1[31]=-1644455;
+		twiddle1[32]=0;
+		twiddle1[33]=1644455;
+		twiddle1[34]=3273072;
+		twiddle1[35]=4870169;
+		twiddle1[36]=6420363;
+		twiddle1[37]=7908725;
+		twiddle1[38]=9320922;
+		twiddle1[39]=10643353;
+		twiddle1[40]=11863283;
+		twiddle1[41]=12968963;
+		twiddle1[42]=13949745;
+		twiddle1[43]=14796184;
+		twiddle1[44]=15500126;
+		twiddle1[45]=16054795;
+		twiddle1[46]=16454846;
+		twiddle1[47]=16696429;
+		twiddle1[48]=16777216;
+		twiddle1[49]=16696429;
+		twiddle1[50]=16454846;
+		twiddle1[51]=16054795;
+		twiddle1[52]=15500126;
+		twiddle1[53]=14796184;
+		twiddle1[54]=13949745;
+		twiddle1[55]=12968963;
+		twiddle1[56]=11863283;
+		twiddle1[57]=10643353;
+		twiddle1[58]=9320922;
+		twiddle1[59]=7908725;
+		twiddle1[60]=6420363;
+		twiddle1[61]=4870169;
+		twiddle1[62]=3273072;
+		twiddle1[63]=1644455;
+
+		//temporary variables
+		int i,j,k;
+		int channelCount;
+		Vio io={
+			numSources=1,
+			numSinks=1
+		};
+
+		Distribute distribute[distribute_number];
+		//Distribute distribute[4];
+		int count=0;
+		for(i=0;i<distribute_stage;i++){
+			tmp=1;
+			for(l=0;l<i;l++){
+				tmp=tmp*2;
+			}
+			for(j=0;j<tmp;j++){
+				distribute[count].name="distribute_"+i+j;
+				count=count+1;
+			}
+		}
+
+
+		channel c_0={io.out[0], distribute[0].in};
+
+		//interconnection between distributes
+		for(i=0;i<distribute_stage-1;i++){
+			tmp=1;
+			for(l=0;l<i;l++){
+				tmp=tmp*2;
+			}
+			//tmp is equal to power(2,i)
+			for(j=0;j<tmp;j++){
+				channel c_1={distribute[(tmp-1)+j].out_1, distribute[(2*tmp-1)+(2*j)].in};
+				channel c_2={distribute[(tmp-1)+j].out_2, distribute[(2*tmp-1)+(2*j+1)].in};
+			}
+		}
+
+		FirstFFT firstFFT[points/2];
+		for(i=0;i<points/2;i++){
+			firstFFT[i].name="firstFFT_"+i;
+		}
+		tmp=1;
+		for(l=0;l<distribute_stage-1;l++){
+			tmp=tmp*2;
+		}
+		//tmp is equal to power(2, distribute_stage-1)
+		for(j=0;j<points/4;j++){
+			channel c_3={distribute[(tmp-1)+j].out_1, firstFFT[2*j].in};
+			channel c_4={distribute[(tmp-1)+j].out_2, firstFFT[2*j+1].in};
+		}
+
+		RealFFT fft[stage*points/2];
+		for (i=0;i<stage;i++){
+			tmp=1;
+			for(l=0;l<stage-i;l++){
+				tmp=tmp*2;
+			}
+			//tmp is equal to power(2, stage-i)
+			group=tmp;
+			member=(points/2)/group;
+			interval=32/member;
+			for(j=0;j<group;j++){
+				for(k=0;k<member;k++){
+					tmpName=j*member+k;
+					fft[(points/2)*i+tmpName].name="fft_"+i+tmpName;
+					//the naming fashion is like two-dimension array
+					y=2*k*interval;
+					fft[(points/2)*i+tmpName].a1=twiddle0[y];
+					fft[(points/2)*i+tmpName].a2=twiddle1[y];
+					y=2*k*interval+interval;
+					fft[(points/2)*i+tmpName].b1=twiddle0[y];
+					fft[(points/2)*i+tmpName].b2=twiddle1[y];
+				}
+			}
+		}
+
+		//channel between the firstFFT and the first stage of FFT
+		for(i=0;i<points/4;i++){
+			channel c_5={firstFFT[2*i].out_1, fft[2*i].in_1};
+			channel c_6={firstFFT[2*i].out_2, fft[2*i+1].in_1};
+			channel c_7={firstFFT[2*i+1].out_1, fft[2*i].in_2};
+			channel c_8={firstFFT[2*i+1].out_2, fft[2*i+1].in_2};
+		}
+
+		//channel between fft
+		//each stage is only responsible for the channel that is in front of it
+		//that is why i begins from 1
+		for(i=1;i<stage;i++){
+			tmp=1;
+			for(l=0;l<stage-i;l++){
+				tmp=tmp*2;
+			}
+			//tmp is equal to power(2, stage-i)
+			group=tmp;
+			member=(points/2)/group;
+			for(j=0;j<group;j++){
+				for(k=0;k<member/2;k++){
+					//the coordinates of each processor is used to calculate its index
+					channel c_9={ fft[(i-1)*points/2+j*member+k].out_1,fft[i*points/2+j*member+k].in_1};
+					channel c_10={ fft[(i-1)*points/2+j*member+k+member/2].out_1,fft[i*points/2+j*member+k].in_2};
+					channel c_11={ fft[(i-1)*points/2+j*member+k].out_2,fft[i*points/2+j*member+k+member/2].in_1};
+					channel c_12={ fft[(i-1)*points/2+j*member+k+member/2].out_2,fft[i*points/2+j*member+k+member/2].in_2};
+				}
+			}
+		}
+
+		FinalFFT finalFFT[points/2];
+		for(i=0;i<points/2;i++){
+			finalFFT[i].name="finalFFT_"+i;
+			y=2*i;
+			finalFFT[i].a1=twiddle0[y];
+			finalFFT[i].a2=twiddle1[y];
+			y=2*i+1;                 
+			finalFFT[i].b1=twiddle0[y];
+			finalFFT[i].b2=twiddle1[y];
+		}
+
+		//channel between the fft on the last stage and the finalFFT
+		for(i=0;i<points/4;i++){
+			channel c_13={fft[(stage-1)*points/2+i].out_1,finalFFT[i].in_1};
+			channel c_14={fft[(stage-1)*points/2+i+points/4].out_1,finalFFT[i].in_2};
+			channel c_15={ fft[(stage-1)*points/2+i].out_2,finalFFT[i+points/4].in_1};
+			channel c_16={ fft[(stage-1)*points/2+i+points/4].out_2,finalFFT[i+points/4].in_2};
+		}
+
+		//the number of assembler is the same to distribute_number
+		AssemblerTwo assembler2[distribute_number];
+
+		channel c_17={assembler2[0], io.in[0]};
+		//interconnection between assemblers
+		//the stage of assembler is the same to that of distribute
+		for(i=0;i<distribute_stage-1;i++){
+			tmp=1;
+			for(l=0;l<i;l++){
+				tmp=tmp*2;
+			}
+			//tmp is equal to power(2,i)
+			for(j=0;j<tmp;j++){
+				channel c_1={assembler2[(2*tmp-1)+(2*j)].out, assembler2[(tmp-1)+j].in_1} ;
+				channel c_2={assembler2[(2*tmp-1)+(2*j+1)].out, assembler2[(tmp-1)+j].in_2 };
+			}
+		}
+
+		//connection between assembler and finalFFT
+		tmp=1;
+		for(l=0;l<distribute_stage-1;l++){
+			tmp=tmp*2;
+		}
+		//tmp is equal to power(2, distribute_stage-1)
+		for(j=0;j<points/4;j++){
+			channel c_20={finalFFT[2*j].out, assembler2[(tmp-1)+j].in_1};
+			channel c_21={finalFFT[2*j+1].out, assembler2[(tmp-1)+j].in_2};
+		}
+
+	}
+}
+design FFT{
+    Root root;
+}

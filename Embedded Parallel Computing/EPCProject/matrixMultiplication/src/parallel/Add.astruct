@@ -1,0 +1,10 @@
+package parallel;
+
+interface Add{
+	inbound in_r;
+	inbound in_c;
+	outbound out;
+}
+binding JAssembler implements Add{
+	implementation "Add.java";
+}

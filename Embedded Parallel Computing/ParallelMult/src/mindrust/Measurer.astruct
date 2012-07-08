@@ -1,0 +1,15 @@
+package mindrust;
+
+interface Measurer {
+	inbound inA;
+	inbound inB;
+	inbound inResult;
+	outbound outA;
+	outbound outB;
+	outbound outResult;
+	property int dim;
+}
+
+binding JMeasurer implements Measurer {
+	implementation "Measurer.java";
+}

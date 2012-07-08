@@ -1,0 +1,12 @@
+package fft;
+
+interface FirstFFT{
+    inbound in;
+
+    outbound out_1;
+    outbound out_2;
+
+}
+binding JFirstFFT implements FirstFFT{
+    implementation "FirstFFT.java";
+}

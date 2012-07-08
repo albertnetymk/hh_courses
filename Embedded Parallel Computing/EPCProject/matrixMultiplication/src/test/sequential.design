@@ -1,0 +1,16 @@
+package test;
+import astruct.pcie.Vio;
+import sequential.Matrix;
+interface Root {}
+binding CRoot implements Root {
+Vio Vio = {
+	numSources = 1,
+	numSinks = 1
+};
+Matrix matrix;
+channel c_0={Vio.out[0], matrix.in};
+channel c_1={matrix.out, Vio.in[0]};
+}
+design sequential {
+	Root root;
+}

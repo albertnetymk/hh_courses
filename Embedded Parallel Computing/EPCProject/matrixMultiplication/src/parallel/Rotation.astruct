@@ -1,0 +1,11 @@
+package parallel;
+
+interface Rotation{
+	inbound in;
+	outbound out;
+
+	property int r;
+}
+binding JRotation implements Rotation{
+	implementation "Rotation.java";
+}

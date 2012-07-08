@@ -1,0 +1,15 @@
+package mindrust;
+
+interface Cell {
+	inbound in_top;
+	inbound in_left;
+	outbound out_right;
+	outbound out_down;
+	property int innerDim;
+	property int row;
+	property int col;
+}
+
+binding JCell implements Cell {
+	implementation "Cell.java";
+}

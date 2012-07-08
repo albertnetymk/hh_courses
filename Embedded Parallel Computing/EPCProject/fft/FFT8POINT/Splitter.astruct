@@ -1,0 +1,23 @@
+/**********************************************************
+*
+* File: Splitter.astruct
+*
+* Description: Splitter interface and it contains two input
+* ports and four output ports
+*
+**********************************************************/
+package FFT8POINT;
+interface Splitter {
+	inbound inReal;
+	inbound inImg;
+	outbound outReal1, outImg1;
+	outbound outReal2, outImg2;
+	// total no of point in FFT
+	property int propPoints;
+	// no of points to read from previous splitter
+	property int propN;
+}
+binding SplitterBinding implements Splitter {
+	implementation "Splitter.java";
+	attribute CompilerOptions(targetSR = true) on SplitterBinding;
+}

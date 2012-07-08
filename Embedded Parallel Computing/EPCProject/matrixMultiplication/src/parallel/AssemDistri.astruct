@@ -1,0 +1,15 @@
+package parallel;
+
+interface AssemDistri {
+	inbound in_1;
+	inbound in_2;
+	inbound in_3;
+	inbound in_4;
+	outbound out_1;
+    outbound out_2;
+    outbound out_3;
+    outbound out_4;
+}
+binding JAssemDistri implements AssemDistri{
+	implementation "AssemDistri.java";
+}

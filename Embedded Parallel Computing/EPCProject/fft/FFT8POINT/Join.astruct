@@ -1,0 +1,22 @@
+/**********************************************************
+*
+* File: Join.astruct
+*
+* Description: Join interface and it contains four input
+* ports and two output ports
+*
+**********************************************************/
+package FFT8POINT;
+interface Join {
+	inbound inReal1, inImg1;
+	inbound inReal2, inImg2;
+	outbound outReal, outImg;
+	// total no of points in FFT
+	property int propPoints;
+	// no of points to read from previous join
+	property int propN;
+}
+binding JoinBinding implements Join {
+	implementation "Join.java";
+	attribute CompilerOptions(targetSR = true) on JoinBinding;
+}

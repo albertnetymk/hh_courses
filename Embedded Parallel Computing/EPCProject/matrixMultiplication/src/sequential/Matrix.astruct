@@ -1,0 +1,9 @@
+package sequential;
+
+interface Matrix {
+	inbound in;
+	outbound out;
+}
+binding JMatrix implements Matrix{
+	implementation "Matrix.java";
+}

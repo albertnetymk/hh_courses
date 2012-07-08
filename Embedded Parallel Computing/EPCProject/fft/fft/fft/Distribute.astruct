@@ -1,0 +1,14 @@
+package fft;
+
+interface Distribute{
+    inbound in;
+
+    outbound out_1;
+    outbound out_2;
+    
+    
+}
+binding JDistributeBegin implements Distribute{
+    implementation "Distribute.java";
+    attribute CompilerOptions(targetSR=true) on JDistributeBegin;
+}

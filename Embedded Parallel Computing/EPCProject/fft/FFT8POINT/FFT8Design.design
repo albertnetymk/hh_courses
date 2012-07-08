@@ -1,0 +1,142 @@
+/**********************************************************
+*
+* File: FFT8Design.design
+*
+* Description: design file for the design approach two.
+* Each fft object will compute only one butterfly
+*
+**********************************************************/
+package FFT8POINT;
+design FFT8Design {
+	Root root;
+}
+interface Root {}
+binding RootBinding implements Root {
+	void generate() {
+		int N = 8; // total no of points
+		int nStages = 3;// total no of butterfly stages 2^(N)
+		int nPoints = 2;// no of points calculated on each FFT object
+		Vio io = {numSources=2, numSinks=2};
+		/* each FFT object computes 2 points.
+		 * For this design we need {N/nPoints * log2(N)} FFT objects,
+		 * {N/nPoints - 1} Splitters and {N/nPoints - 1} Join
+		 */
+		int i,k;
+		int nSplitJoin = (N/nPoints-1);
+		// no of fft objects to connect with splitter or join
+		int nFft_onsides = N/nPoints;
+		// no of inner fft objects in desgin
+		int nFft = nStages*(N/nPoints)-N;
+		// stage 1 objects
+		FFT_2in4out fft24[nFft_onsides];
+		// stage 4 objects
+		FFT_4in2out fft42[nFft_onsides];
+		// stage 2 and 3 objects
+		FFT fft[nFft];
+		Splitter s[nSplitJoin];
+		Join j[nSplitJoin];
+		// stage 1 twiddle factors
+		int s1Cos = 16777216;
+		int s1Sin = 0;
+		// stage 2 twiddle factors - first value is for even
+		// points and second is for odd
+		int s2Cos[] = {16777216, 0};
+		int s2Sin[] = {0, -16777216};
+		// stage 3 twiddle factors
+		int s3Cos[] = {16777216, 11863683, 0, -11863683};
+		int s3Sin[] = {0, -11863683, -16777216, -11863683};
+		for(i=0; i<nFft_onsides; i++) {
+			// objects for stage 1
+			fft24[i].name = "FFT_2in4out"+i;
+			fft24[i].propPoints=nPoints;
+			fft24[i].propCosVal = s1Cos;
+			fft24[i].propSinVal = s1Sin;
+			// objects for stage 4
+			fft42[i].name = "FFT_4in2out"+i;
+			fft42[i].propPoints=nPoints;
+			fft42[i].propCosVal = s3Cos[i];
+			fft42[i].propSinVal = s3Sin[i];
+		}
+		int index=0;
+		for(i=0; i<nFft; i++) {
+			fft[i].name = "FFT"+i;
+			fft[i].propPoints=nPoints;
+			fft[i].propCosVal = s2Cos[index];
+			fft[i].propSinVal = s2Sin[index];
+			index=index+1;
+			if(index==2)
+				index=0;
+		}
+		for(i=0; i<nSplitJoin; i++) {
+			s[i].name = "split"+i;
+			s[i].propPoints=N;
+			j[i].name = "join"+i;
+			j[i].propPoints=N;
+		}
+		s[0].propN = N;
+		s[1].propN = N/2;
+		s[2].propN = N/2;
+		j[0].propN = N/4;
+		j[1].propN = N/4;
+		j[2].propN = N/2;
+		// connect Vio object with first splitter and last join objects
+		channel c10 = {io.out[0], s[0].inReal};
+		channel c11 = {io.out[1], s[0].inImg};
+		channel c12 = {j[nSplitJoin-1].outReal, io.in[0]};
+		channel c13 = {j[nSplitJoin-1].outImg, io.in[1]};
+		// connecting splitters
+		channel c14 = {s[0].outReal1, s[1].inReal};
+		channel c15 = {s[0].outImg1, s[1].inImg};
+		channel c16 = {s[0].outReal2, s[2].inReal};
+		channel c17 = {s[0].outImg2, s[2].inImg};
+		// connecting joins
+		channel c114 = {j[0].outReal, j[2].inReal1};
+		channel c115 = {j[0].outImg, j[2].inImg1};
+		channel c116 = {j[1].outReal, j[2].inReal2};
+		channel c117 = {j[1].outImg, j[2].inImg2};
+		// connect splitters with FFT_2in4out
+		k = 1;
+		for(i=0; i<N/nPoints; i=i+2){
+			channel c27 = {s[k].outReal1, fft24[i].inReal};
+			channel c28 = {s[k].outImg1, fft24[i].inImg};
+			channel c29 = {s[k].outReal2, fft24[i+1].inReal};
+			channel c30 = {s[k].outImg2, fft24[i+1].inImg};
+			// butterfly between stage 1 and 2
+			channel c31 = {fft24[i].outReal1, fft[i].inReal1};
+			channel c32 = {fft24[i].outImg1, fft[i].inImg1};
+			channel c33 = {fft24[i].outReal2, fft[i+1].inReal2};
+			channel c34 = {fft24[i].outImg2, fft[i+1].inImg2};
+			channel c35 = {fft24[i+1].outReal1, fft[i+1].inReal1};
+			channel c36 = {fft24[i+1].outImg1, fft[i+1].inImg1};
+			channel c37 = {fft24[i+1].outReal2, fft[i].inReal2};
+			channel c38 = {fft24[i+1].outImg2, fft[i].inImg2};
+			k=k+1;
+		}
+		// connect join with FFT_4in2out
+		k = 0;
+		for(i=0; i<N/nPoints; i=i+2){
+			channel c39 = {fft42[i].outReal, j[k].inReal1};
+			channel c40 = {fft42[i].outImg, j[k].inImg1};
+			channel c41 = {fft42[i+1].outReal, j[k].inReal2};
+			channel c42 = {fft42[i+1].outImg, j[k].inImg2};
+			k=k+1;
+		}
+		// connect FFT_4in2out with FFT between stage 2 and 3
+		channel c43 = {fft[0].outReal1, fft42[0].inReal1};
+		channel c44 = {fft[0].outImg1, fft42[0].inImg1};
+		channel c45 = {fft[0].outReal2, fft42[2].inReal2};
+		channel c46 = {fft[0].outImg2, fft42[2].inImg2};
+		channel c47 = {fft[1].outReal1, fft42[1].inReal1};
+		channel c48 = {fft[1].outImg1, fft42[1].inImg1};
+		channel c49 = {fft[1].outReal2, fft42[3].inReal2};
+		channel c50 = {fft[1].outImg2, fft42[3].inImg2};
+		channel c51 = {fft[2].outReal1, fft42[2].inReal1};
+		channel c52 = {fft[2].outImg1, fft42[2].inImg1};
+		channel c53 = {fft[2].outReal2, fft42[0].inReal2};
+		channel c54 = {fft[2].outImg2, fft42[0].inImg2};
+		channel c55 = {fft[3].outReal1, fft42[3].inReal1};
+		channel c56 = {fft[3].outImg1, fft42[3].inImg1};
+		channel c57 = {fft[3].outReal2, fft42[1].inReal2};
+		channel c58 = {fft[3].outImg2, fft42[1].inImg2};
+	}
+}

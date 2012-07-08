@@ -1,0 +1,13 @@
+package mindrust;
+
+interface Joiner {
+	inbound in_left;
+	inbound in_bottom;
+	outbound out_top;
+	property int dim;
+	property int row;
+}
+
+binding JJoiner implements Joiner {
+	implementation "Joiner.java";
+}

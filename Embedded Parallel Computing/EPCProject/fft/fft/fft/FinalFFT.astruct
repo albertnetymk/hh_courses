@@ -1,0 +1,15 @@
+package fft;
+
+interface FinalFFT{
+    inbound in_1;
+    inbound in_2;
+    outbound out;
+
+    property int a1;
+    property int a2;
+    property int b1;
+    property int b2;
+}
+binding JFinalFFT implements FinalFFT{
+    implementation "FinalFFT.java";
+}

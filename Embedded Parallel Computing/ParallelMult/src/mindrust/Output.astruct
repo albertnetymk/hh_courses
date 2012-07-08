@@ -1,0 +1,10 @@
+package mindrust;
+
+interface Output {
+	inbound in;
+	outbound out;
+}
+
+binding JOutput implements Output {
+	implementation "Output.java";
+}

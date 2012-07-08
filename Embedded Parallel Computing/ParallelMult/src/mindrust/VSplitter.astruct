@@ -1,0 +1,13 @@
+package mindrust;
+
+interface VSplitter {
+	inbound in;
+	outbound out_down, out_right;
+	property int resultRow;
+	property int innerDim;
+	property int row;
+}
+
+binding JVSplitter implements VSplitter {
+	implementation "VSplitter.java";
+}

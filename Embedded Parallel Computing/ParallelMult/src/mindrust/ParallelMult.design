@@ -1,0 +1,144 @@
+package mindrust;
+
+import astruct.pcie.Vio;
+
+interface Root {}
+
+interface MatrixMultiplier {
+    inbound inA;
+    inbound inB;
+    outbound out;
+    property int resultRow;
+    property int innerDim;
+    property int resultCol;
+}
+
+binding JMatrixMultiplier implements MatrixMultiplier {
+    void generate() {
+	int num_cells = resultRow*resultCol;
+	int i, j;
+
+	Output output;
+
+	// TODO Why this?
+	// output.dim = dim;
+
+	Cell cells[num_cells];
+	VSplitter vsplitters[resultRow];
+	HSplitter hsplitters[resultCol];
+	Joiner joiners[resultRow];
+
+	// Create Cells
+	for (i = 0; i < resultRow; i++) {
+	    for (j = 0; j < resultCol; j++) {
+		cells[i*resultCol + j].innerDim = innerDim;
+		cells[i*resultCol + j].row = i;
+		cells[i*resultCol + j].col = j;
+		cells[i*resultCol + j].name = "cell_" + i + "_" + j;
+	    }
+	}
+
+	// Create VSplitters, HSplitters and Joiners
+	for (i = 0; i < resultRow; i++) {
+	    vsplitters[i].resultRow = resultRow;
+	    vsplitters[i].innerDim = innerDim;
+	    vsplitters[i].row = i;
+	    vsplitters[i].name = "vsplitter_" + i;
+	    joiners[i].resultRow = resultRow;
+	    joiners[i].innerDim = innerDim;
+	    joiners[i].row = i;
+	    joiners[i].name = "joiner_" + i;
+	}
+	for (i = 0; i < resultCol; i++) {
+	    hsplitters[i].resultCol = resultCol;
+	    hsplitters[i].innerDim = innerDim;
+	    hsplitters[i].col = i;
+	    hsplitters[i].name = "hsplitter_" + i;
+	}
+
+	// Connect the vsplitters down to a vsplitter and right to a cell
+	for (i = 0; i < resultRow; i++) {
+	    // Only forward down if not a sentinel splitter
+	    if (i == resultRow-1) {
+		attribute Unused() on vsplitters[i].out_down;
+	    } else {
+		channel chVSdown = { vsplitters[i].out_down, vsplitters[i+1].in };
+	    }
+	    // Always forward to right
+	    channel chVSright = { vsplitters[i].out_right, cells[i*resultCol].in_left };
+	}
+
+	// Connect the hsplitters right to a vsplitter and down to a cell
+	for (i = 0; i < resultCol; i++) {
+	    // Only forward right if not a sentinel splitter
+	    if (i == resultCol-1) {
+		attribute Unused() on hsplitters[i].out_right;
+	    } else {
+		channel chHSright = { hsplitters[i].out_right, hsplitters[i+1].in };
+	    }
+	    // Always forward down
+	    channel chHSright = { hsplitters[i].out_down, cells[i].in_top };
+	}
+
+	// Connect the joiners up to a joiner
+	for (i = 0; i < resultRow; i++) {
+	    // Top joiner goes up to the Output
+	    if (i == 0) {
+		channel chJOut = {joiners[0].out_top, output.in};
+	    } else {
+		channel chJUp = {joiners[i].out_top, joiners[i-1].in_bottom};
+	    }
+	}
+	attribute Unused() on joiners[resultRow-1].in_bottom;
+
+	// Connect the cells. Special care taken of:
+	//   - Sentinels at the bottom, which don't forward down.
+	//   - Sentinels at the right-most column which connect to joiners.
+
+	for (i = 0; i < resultRow; i++) {
+	    for (j = 0; j < resultCol; j++) {
+		// If right-most
+		if (j == resultCol-1) {
+		    // Connect to joiner
+		    channel chCJRight = {cells[i*resultCol + j].out_right, joiners[i].in_left};
+		} else {
+		    // Connect to right neighbour cell
+		    channel chCCRight = {cells[i*resultCol + j].out_right, cells[i*resultCol + j+1].in_left};
+		}
+
+		// If bottom
+		if (i == resultRow-1) {
+		    // Sentinel doesn't forward down
+		    attribute Unused() on cells[i*resultCol + j].out_down;
+		} else {
+		    // Forward down to neightbour cell
+		    channel chCDown = {cells[i*resultCol + j].out_down, cells[(i+1)*resultCol + j].in_top};
+		}
+	    }
+	}
+
+	// I/O
+	channel chOUT = {output.out, out};
+	channel chVIN = {inA, vsplitters[0].in};
+	channel chHIN = {inB, hsplitters[0].in};
+    }
+}
+
+binding CRoot implements Root {
+    Vio Vio = {
+	numSources = 2,
+	numSinks = 1
+    };
+
+    MatrixMultiplier MatrixMultiplier = {
+	resultRow = 16, innerDim = 16, resultCol = 16
+    };
+    // In/Out
+    channel ch0 = {Vio.out[0], MatrixMultiplier.inA};
+    channel ch1 = {Vio.out[1], MatrixMultiplier.inB};
+    channel ch2 = {MatrixMultiplier.out, Vio.in[0]};
+}
+
+design ParallelMult {
+    Root Root;
+}

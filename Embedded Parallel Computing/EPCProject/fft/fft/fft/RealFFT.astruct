@@ -1,0 +1,16 @@
+package fft;
+
+interface RealFFT{
+    inbound in_1;
+    inbound in_2;
+    outbound out_1;
+    outbound out_2;
+
+    property int a1;
+    property int a2;
+    property int b1;
+    property int b2;
+}
+binding JRealFFT implements RealFFT{
+    implementation "FFT.java";
+}

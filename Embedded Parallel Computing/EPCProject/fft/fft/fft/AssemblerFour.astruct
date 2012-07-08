@@ -1,0 +1,13 @@
+package fft;
+
+interface AssemblerFour{
+    inbound in_1;
+    inbound in_2;
+    inbound in_3;
+    inbound in_4;
+    outbound out;
+}
+binding JAssemblerFour implements AssemblerFour{
+    implementation "AssemblerFour.java";
+	attribute CompilerOptions(targetSR=true) on JAssemblerFour;
+}
