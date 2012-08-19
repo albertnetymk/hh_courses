@@ -1,0 +1,5 @@
+AI is one really broad area; we just scratch the surface.
+
+lab4 contains one bug: nn2 is not writing parameters to the file after training.
+
+Really didn't do the project well. I was expecting some general rule-based expert system.
